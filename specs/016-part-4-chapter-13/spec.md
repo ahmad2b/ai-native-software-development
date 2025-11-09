@@ -231,9 +231,9 @@ By the end of this chapter, students will be able to:
 
 **Validation Requirements:**
 
-- **FR-022**: All code examples MUST be tested on Windows, Mac, and Linux (cross-platform verification)
-- **FR-023**: Reading level MUST be Grade 7-8 (verified via Flesch-Kincaid readability tool)
-- **FR-024**: Chapter MUST include CEFR proficiency levels in lesson plan (A1-A2 progression)
+- **FR-023**: All code examples MUST be tested on Windows, Mac, and Linux (cross-platform verification)
+- **FR-024**: Reading level MUST be Grade 7-8 (verified via Flesch-Kincaid readability tool)
+- **FR-025**: Chapter MUST include CEFR proficiency levels in lesson plan (A1-A2 progression)
 
 ### Key Entities *(data model for this chapter)*
 

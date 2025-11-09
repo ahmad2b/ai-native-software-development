@@ -359,8 +359,16 @@ Think about: What information does each check provide? Why do both matter?
 **Section 1: Variables – Names for Values**
 - What is a variable? A labeled box that holds data
 - Real-world analogy: "Like a labeled storage box in your closet—label says 'winter clothes', you store winter clothes in it"
-- Naming: `age`, `name`, `price` (descriptive, lowercase)
 - Assignment: `age = 25` (create variable age, store value 25)
+
+**Python Naming Conventions** (PEP 8):
+- **Use lowercase with underscores**: `user_name`, `total_price`, `is_valid`
+- **Be descriptive**: `age` not `a`, `customer_name` not `cn`
+- **Start with letter or underscore**: `name` ✓, `_temp` ✓, `2name` ✗
+- **No spaces**: `user name` ✗, `user_name` ✓
+- **Avoid Python keywords**: `class` ✗, `user_class` ✓
+- **Constants use UPPERCASE**: `MAX_SIZE`, `API_KEY` (if introduced)
+- Examples: `age`, `user_name`, `total_price`, `is_student`, `favorite_color`
 
 **Section 2: The Four Core Primitive Types**
 - **int** (integers): `age: int = 25` — Whole numbers (no decimals)
@@ -383,10 +391,19 @@ Think about: What information does each check provide? Why do both matter?
 - Purpose: Students know collections exist; reduces surprise when encountered in later chapters
 
 **Section 5: Working With Variables**
+- **Introduce print() first**: "The `print()` function displays output to your screen. It shows you what's inside variables."
 - Reading variables: `print(age)` displays the value
 - Combining with f-strings: `print(f"Age: {age}")` (preview of Lesson 4)
+- **Introduce type() first**: "The `type()` function tells you what kind of data a variable holds."
 - Using `type()` function: `type(age)` returns the actual type
+- **Introduce isinstance() first**: "The `isinstance()` function checks if a variable is a specific type. It returns True or False."
 - Using `isinstance()`: `isinstance(age, int)` checks if variable is the right type
+
+**Built-in Function Introduction Pattern** (FR-022):
+- Every built-in function gets 1-2 line explanation BEFORE first use
+- Pattern: "The `function_name()` does [what it does]. [Why it's useful]."
+- Then show syntax and example
+- This prevents beginner confusion ("Where did this function come from?")
 
 #### CoLearning Elements Placement
 
@@ -432,6 +449,13 @@ Think about: What information does each check provide? Why do both matter?
 - **Bad**: `x = 25`, `a = "hello"` (What is x? What is a?)
 - **Good**: `age = 25`, `name = "hello"` (Purpose is clear)
 - **Standard**: Use lowercase_with_underscores for multi-word names (`favorite_color`, not `favoriteColor`)
+
+**Mistake 5**: Invalid variable names (naming convention violations)
+- **Wrong**: `2age` (starts with number), `user name` (has space), `class` (Python keyword)
+- **Right**: `age2`, `user_name`, `user_class`
+- **Rule**: Start with letter/underscore; use lowercase_with_underscores; no spaces; avoid keywords
+- **Teaching**: Show error message when invalid name used; explain the rules
+- **AI Help**: "Why does Python reject `user name` as a variable name? What's the right way?"
 
 #### Try With AI (4 Prompts - Progressive Bloom's)
 
@@ -511,6 +535,7 @@ Ask your AI:
 - Example: "What's worse—code with no comments or code with wrong comments?"
 
 **Section 3: The print() Function**
+- **Introduce print() first**: "The `print()` function displays text and data to your screen. It's how you see what your program is doing."
 - Simplest output: `print("Hello, World!")`
 - Printing variables: `print(name)`, `print(age)`
 - Printing multiple items: `print(name, age, color)`
@@ -721,10 +746,12 @@ Ask your AI: "Here's the error message I got: [paste error]. Can you explain wha
 - Design document: Students describe their program in plain English FIRST
 
 **Section 3: Step-by-Step Build (with AI Collaboration)**
+- **Introduce input() first**: "The `input()` function asks the user to type something. It shows a prompt, waits for them to type and press Enter, then gives you what they typed as a string."
 - Use `input()` to ask user for information
+- **Introduce int() first**: "The `int()` function converts text (strings) to numbers. Since `input()` gives you a string, use `int()` to turn it into a number you can work with."
 - `input()` always returns a string, so convert with `int()` for numbers
-- Validate with `isinstance(age, int)`
-- Build output with f-strings
+- Validate with `isinstance(age, int)` (already introduced in Lesson 3)
+- Build output with f-strings (already introduced in Lesson 4)
 - Add section comments for clarity
 
 **Section 4: Testing and Validation**

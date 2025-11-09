@@ -95,7 +95,7 @@ Core language skills: production-quality Python with AIDD
 | # | Chapter Title | File Name | Status |
 |---|---------------|-----------|--------|
 | 12 | Python UV: Fastest Python Package Manager | `12-python-uv-package-manager/` | ✅ Implemented |
-| 13 | Introduction to Python | `13-introduction-to-python/` | ⚠️ Needs Revision |
+| 13 | Introduction to Python | `13-introduction-to-python/` | ✅ Complete |
 | 14 | Data Types | `14-data-types/` | ✅ Implemented & Validated |
 | 15 | Operators, Keywords, and Variables | `15-operators-keywords-variables/` | ✅ Implemented & Validated |
 | 16 | Strings and Type Casting | `16-strings-type-casting/` | ✅ Implemented & Validated |

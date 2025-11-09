@@ -460,6 +460,7 @@ This task checklist breaks down Chapter 13 implementation into atomic, testable,
   - Quotes around numbers
   - Confusing type hints with enforcement
   - Non-descriptive variable names
+  - Invalid variable names (starts with number, has spaces, uses keywords)
 
 - [ ] Approved before full writing
 
@@ -488,6 +489,15 @@ This task checklist breaks down Chapter 13 implementation into atomic, testable,
   - **float**: Decimal numbers — Example: `price: float = 19.99`
   - **bool**: True/False values — Example: `is_student: bool = True`
 
+- [ ] Python naming conventions explained (PEP 8):
+  - **Use lowercase with underscores**: `user_name`, `total_price`, `is_valid`
+  - **Be descriptive**: `age` not `a`, `customer_name` not `cn`
+  - **Start with letter or underscore**: `name` ✓, `_temp` ✓, `2name` ✗
+  - **No spaces**: `user name` ✗, `user_name` ✓
+  - **Avoid Python keywords**: `class` ✗, `user_class` ✓
+  - Examples: `age`, `user_name`, `total_price`, `is_student`, `favorite_color`
+  - Show error when invalid name used (e.g., `2age`, `user name`)
+
 - [ ] Type hints explained:
   - Purpose: Describe what data a variable should hold
   - Syntax: `: TypeName` (colon + space + type)
@@ -501,14 +511,19 @@ This task checklist breaks down Chapter 13 implementation into atomic, testable,
   - No syntax or examples provided
   - 1-2 paragraphs maximum
 
-- [ ] isinstance() and type() explained:
+- [ ] Built-in functions introduced before use (FR-022):
+  - **print()**: "The `print()` function displays output to your screen. It shows you what's inside variables." (1-2 lines BEFORE first use)
+  - **type()**: "The `type()` function tells you what kind of data a variable holds." (1-2 lines BEFORE first use)
+  - **isinstance()**: "The `isinstance()` function checks if a variable is a specific type. It returns True or False." (1-2 lines BEFORE first use)
+
+- [ ] isinstance() and type() usage explained:
   - `isinstance(variable, int)` checks if variable is an int
   - `type(variable)` returns the actual type
   - Useful for validation
 
 - [ ] Code examples integrated throughout (not separate section)
 - [ ] Reading level: Grade 7-8
-- [ ] Cognitive load: 6 concepts (variable, primitive types, type hints, naming, collection awareness, type validation)
+- [ ] Cognitive load: 7 concepts (variable, primitive types, type hints, naming conventions, invalid variable names and error messages, collection awareness, type validation)
 - [ ] CEFR level: A2 (simple application with scaffolding)
 - [ ] No gatekeeping language
 
@@ -744,6 +759,7 @@ This task checklist breaks down Chapter 13 implementation into atomic, testable,
   - Philosophy: Code for computers, comments for humans
 
 - [ ] print() section:
+  - **Introduce print() first** (FR-022): "The `print()` function displays text and data to your screen. It's how you see what your program is doing." (1-2 lines BEFORE examples)
   - Basic: `print("Hello")`
   - Variables: `print(name)`
   - Multiple items: `print(name, age)`
@@ -996,10 +1012,12 @@ This task checklist breaks down Chapter 13 implementation into atomic, testable,
   - Reference this as "specification-first thinking"
 
 - [ ] Step-by-Step Build section:
+  - **Introduce input() first** (FR-022): "The `input()` function asks the user to type something. It shows a prompt, waits for them to type and press Enter, then gives you what they typed as a string." (1-2 lines BEFORE first use)
   - Use `input()` to ask questions
+  - **Introduce int() first** (FR-022): "The `int()` function converts text (strings) to numbers. Since `input()` gives you a string, use `int()` to turn it into a number you can work with." (1-2 lines BEFORE first use)
   - Convert string to int with `int()`
-  - Validate with `isinstance()`
-  - Build output with f-strings
+  - Validate with `isinstance()` (already introduced in Lesson 3)
+  - Build output with f-strings (already introduced in Lesson 4)
   - Add section comments for clarity
   - Include AI collaboration prompts ("Ask your AI to review this...")
 
@@ -1439,6 +1457,42 @@ This task checklist breaks down Chapter 13 implementation into atomic, testable,
 - [ ] Zero forward references in final content ✓
 
 **Reference**: FR-018 in spec.md (No forward references constraint)
+
+**Dependencies**: Tasks 2.5, 3.5, 4.6, 5.6, 6.6
+
+---
+
+### Task 7.9: Built-in Function Introduction Check
+**Priority**: MUST-HAVE | **Effort**: 45m | **Status**: Not Started
+
+**Description**: Verify all built-in functions are introduced with 1-2 line explanation BEFORE first use (FR-022).
+
+**Acceptance Criteria**:
+- [ ] Search all lessons for built-in functions used:
+  - print() (used in Lessons 3, 4, 5)
+  - input() (used in Lesson 5)
+  - type() (used in Lesson 3)
+  - isinstance() (used in Lessons 3, 5)
+  - int() (used in Lesson 5)
+
+- [ ] Verify each function has introduction BEFORE first use:
+  - [ ] **Lesson 3**: print(), type(), isinstance() all introduced before examples
+  - [ ] **Lesson 4**: print() introduced before examples (not assumed from Lesson 3)
+  - [ ] **Lesson 5**: input() and int() introduced before capstone code
+
+- [ ] Introduction pattern verified:
+  - [ ] Each introduction is 1-2 lines
+  - [ ] Pattern: "The `function_name()` does [what]. [Why useful]."
+  - [ ] Introduction appears IMMEDIATELY before first use (not buried earlier)
+  - [ ] Beginner-friendly language (no jargon without explanation)
+
+- [ ] If any function used without introduction:
+  - [ ] Add 1-2 line introduction before first use
+  - [ ] Document addition
+
+- [ ] Zero instances of unexplained built-in functions ✓
+
+**Reference**: FR-022 in spec.md (Built-in function introduction requirement)
 
 **Dependencies**: Tasks 2.5, 3.5, 4.6, 5.6, 6.6
 
