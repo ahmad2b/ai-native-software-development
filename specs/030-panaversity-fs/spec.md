@@ -130,12 +130,12 @@ The Docusaurus static site generator needs to fetch complete book content from P
 **MCP Server Architecture**
 
 - **FR-004**: System MUST implement MCP server using Python MCP SDK (FastMCP) with Stateless Streamable HTTP transport. Authentication via API key for MVP (OAuth deferred to future enhancement). Error handling with structured logging and Sentry integration.
-- **FR-005**: MCP server MUST expose 12 tools: `read_content`, `write_content` (upsert), `delete_content`, `read_summary`, `write_summary`, `delete_summary`, `upload_asset`, `get_asset`, `list_assets`, `get_book_archive`, `list_books`, `glob_search`, `grep_search`
+- **FR-005**: MCP server MUST expose 9 tools: `read_content`, `write_content` (upsert), `delete_content`, `upload_asset`, `get_asset`, `list_assets`, `get_book_archive`, `list_books`, `glob_search`, `grep_search`. Note: Summary operations use content tools with `.summary.md` naming convention (see ADR-0018).
 - **FR-006**: (DEFERRED) Authentication via API key in `Authorization` header for MVP. OAuth 2.0 implementation deferred to post-MVP. API key validated against `PANAVERSITY_API_KEY` environment variable.
 
 **Content Operations**
 
-- **FR-007**: `write_content` tool MUST support upsert semantics: (a) If `file_hash` parameter provided, verify hash matches current file before update (conflict detection for updates), (b) If `file_hash` omitted, create new file or overwrite existing (idempotent create). Tool writes to path `books/[book-id]/lessons/[part]/[chapter]/[lesson].md` and logs operation to audit trail.
+- **FR-007**: `write_content` tool MUST support upsert semantics: (a) If `file_hash` parameter provided, verify hash matches current file before update (conflict detection for updates), (b) If `file_hash` omitted, create new file or overwrite existing (idempotent create). Tool writes to path `books/[book-id]/content/[part]/[chapter]/[lesson].md` (Docusaurus-aligned structure per ADR-0018) and logs operation to audit trail. Summaries use same tool with `.summary.md` suffix.
 - **FR-008**: `write_content` MUST detect concurrent modifications by comparing provided `file_hash` against current file SHA256 hash before write. If mismatch, return conflict error with current hash and suggest merge strategy.
 - **FR-009**: `read_content` tool MUST return lesson markdown content plus metadata: {file_size, last_modified, storage_backend, file_hash_sha256, content}
 
@@ -146,11 +146,11 @@ The Docusaurus static site generator needs to fetch complete book content from P
 - **FR-012**: `get_asset` tool MUST return asset metadata including: {cdn_url, file_size, mime_type, upload_timestamp, uploaded_by_agent_id}
 - **FR-013**: CDN URLs MUST use format: `https://cdn.panaversity.com/books/[book-id]/assets/[type]/[filename]` for Cloudflare R2 backend with public bucket access
 
-**Summary Management (Storage Only)**
+**Summary Management (via Content Tools - ADR-0018)**
 
-- **FR-014**: `write_summary` tool MUST create or update summary markdown file at path `books/[book-id]/chapters/[chapter-id]/.summary.md` (idempotent upsert), write content, and log operation to audit trail
-- **FR-015**: `read_summary` tool MUST return summary markdown content plus metadata: {file_size, last_modified, storage_backend, sha256, path, content}
-- **FR-016**: `delete_summary` tool MUST remove summary file at specified path and log operation to audit trail. Returns error if summary does not exist.
+- **FR-014**: (REMOVED) Summary operations use `write_content`, `read_content`, `delete_content` with `.summary.md` naming convention. Example: `content/01-Part/01-Chapter/01-lesson.md` has summary at `content/01-Part/01-Chapter/01-lesson.summary.md`
+- **FR-015**: (REMOVED) Summaries are regular markdown files, no special metadata beyond content tool response
+- **FR-016**: (REMOVED) Use `delete_content` for summary deletion
 
 **Audit Trail (AgentFS Pattern)**
 
@@ -212,8 +212,8 @@ The Docusaurus static site generator needs to fetch complete book content from P
 - **SC-003**: Storage backend failures trigger automatic retry with exponential backoff, succeeding on retry 95% of the time for transient errors
 - **SC-004**: All operations append audit log entry within 50ms of completion with complete metadata (timestamp, agent_id, operation, status)
 - **SC-005**: Concurrent modifications detected with 100% accuracy via file hash comparison, returning conflict error before data corruption occurs
-- **SC-006**: Summary file operations (add/update/get/list) complete within 200ms (95th percentile) for files up to 10KB
-- **SC-007**: Summary file retrieval returns correct metadata (file_size, last_modified, path, hash) with 100% accuracy
+- **SC-006**: (UPDATED per ADR-0018) Summary files (`.summary.md`) use content tools; same 500ms performance target as SC-001
+- **SC-007**: (UPDATED per ADR-0018) Summary files return same metadata as content files via `read_content`
 - **SC-008**: Multi-book registry supports at least 50 books without performance degradation on `list_books` operation (response time <200ms)
 - **SC-009**: Search operations (`glob_search`, `grep_search`) return results within 2 seconds for books containing up to 500 lessons
 - **SC-010**: Docusaurus hydration script using `get_book_archive` downloads complete book (50 lessons, 100 assets, ~200MB) in under 60 seconds during CI/CD build, compared to 5+ minutes with individual file downloads
@@ -366,7 +366,7 @@ The Docusaurus static site generator needs to fetch complete book content from P
 └───────────────────────────────────────────────────────┘
 ```
 
-**Storage Directory Structure**:
+**Storage Directory Structure** (Docusaurus-aligned per ADR-0018):
 ```
 panaversity-storage/
 ├── registry.yaml                       # Central book catalog
@@ -374,53 +374,51 @@ panaversity-storage/
 │   ├── 2025-11-24.jsonl               # Daily JSONL log
 │   └── 2025-11-23.jsonl               # Previous day (archived)
 ├── books/
-│   ├── ai-native-software-development/
-│   │   ├── book.yaml                  # Book metadata & structure
-│   │   ├── parts/                     # Part-level metadata
-│   │   ├── chapters/                  # Chapter-level metadata
-│   │   ├── lessons/
-│   │   │   ├── part-1/
-│   │   │   │   ├── chapter-01/
-│   │   │   │   │   ├── lesson-01.md
-│   │   │   │   │   ├── lesson-02.md
-│   │   │   │   │   └── .summary.md    # Auto-generated chapter summary
-│   │   │   │   └── chapter-02/
-│   │   │   │       └── ...
-│   │   │   └── part-2/
-│   │   │       └── ...
-│   │   └── assets/
-│   │       ├── slides/                # PDF slide decks
-│   │       │   └── chapter-01-slides.pdf
-│   │       ├── images/                # PNG/JPG/SVG
-│   │       │   └── architecture-diagram.png
-│   │       ├── videos/                # MP4 files
-│   │       │   └── demo-walkthrough.mp4
-│   │       └── audio/                 # MP3/WAV files
-│   │           └── lecture-recording.mp3
-│   └── generative-ai-fundamentals/
-│       └── ...
+│   └── ai-native-software-development/
+│       ├── book.yaml                   # Book metadata
+│       │
+│       ├── content/                    # Maps to Docusaurus docs/
+│       │   ├── 01-Introducing-AI-Driven-Development/     # Part
+│       │   │   ├── README.md                             # Part intro
+│       │   │   ├── 01-what-is-ai-native/                 # Chapter
+│       │   │   │   ├── README.md                         # Chapter intro
+│       │   │   │   ├── 01-defining-ai-native.md          # Lesson
+│       │   │   │   ├── 01-defining-ai-native.summary.md  # Lesson summary
+│       │   │   │   ├── 02-core-principles.md
+│       │   │   │   └── 02-core-principles.summary.md
+│       │   │   └── 02-paradigm-shift/
+│       │   │       └── ...
+│       │   └── 02-AI-Tool-Landscape/
+│       │       └── ...
+│       │
+│       └── static/                     # Maps to Docusaurus static/
+│           ├── img/                    # Images organized by part
+│           │   ├── 01-introducing/
+│           │   │   └── architecture-diagram.png
+│           │   └── 02-tool-landscape/
+│           │       └── screenshot.png
+│           ├── slides/                 # PDF slide decks
+│           │   └── 01-intro-slides.pdf
+│           └── videos/                 # MP4 files
+│               └── demo-walkthrough.mp4
 ```
 
-**MCP Tools Summary**:
+**MCP Tools Summary** (9 tools per ADR-0018):
 
 | Tool Name | Purpose | Key Parameters |
 |-----------|---------|----------------|
-| `add_content` | Create new lesson | `book_id`, `path`, `content` |
-| `update_content` | Modify existing lesson | `book_id`, `path`, `content`, `file_hash` |
-| `read_content` | Fetch lesson content | `book_id`, `path` |
-| `delete_content` | Remove lesson | `book_id`, `path` |
-| `add_asset` | Upload binary asset | `book_id`, `asset_type`, `filename`, `binary_data` |
+| `read_content` | Fetch content (lesson or summary) | `book_id`, `path` |
+| `write_content` | Create/update content (upsert) | `book_id`, `path`, `content`, `file_hash?` |
+| `delete_content` | Remove content file | `book_id`, `path` |
+| `upload_asset` | Upload binary asset | `book_id`, `asset_type`, `filename`, `binary_data` |
 | `get_asset` | Retrieve asset metadata | `book_id`, `asset_type`, `filename` |
 | `list_assets` | List all assets | `book_id`, `asset_type?` |
-| `add_summary` | Store summary file | `book_id`, `chapter_path`, `summary_content` |
-| `update_summary` | Overwrite summary file | `book_id`, `chapter_path`, `summary_content` |
-| `get_summary` | Fetch summary metadata | `book_id`, `chapter_path` |
-| `list_summaries` | List all summaries | `book_id`, `chapter_path?` |
-| `get_book_archive` | Download entire book as ZIP/TAR | `book_id`, `format` |
+| `get_book_archive` | Download entire book as ZIP | `book_id` |
 | `list_books` | Get all books in registry | None |
 | `glob_search` | Find files by pattern | `book_id`, `pattern`, `all_books?` |
 | `grep_search` | Search content by regex | `book_id`, `pattern`, `all_books?` |
-| `get_audit_log` | Query operation history | `date_range`, `agent_id?`, `operation?` |
+
+**Note**: Summary files use content tools with `.summary.md` suffix convention. `get_audit_log` is internal/future.
 
 ## Implementation Decisions *(resolved)*
 
