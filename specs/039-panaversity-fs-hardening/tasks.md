@@ -18,10 +18,10 @@
 
 **Purpose**: Add dependencies and create project scaffolding
 
-- [ ] T001 Use `uv add sqlalchemy asyncpg aiosqlite alembic prometheus-client hypothesis` to add all dependencies. Verify with `uv pip list | grep -E "sqlalchemy|asyncpg|aiosqlite|alembic|prometheus|hypothesis"`.
-- [ ] T002 [P] Use `alembic init src/panaversity_fs/database/migrations` to scaffold Alembic migrations directory. **Doc**: Fetch Alembic docs via Context7 for async migration configuration. Configure `alembic.ini` at project root to point to migrations directory.
-- [ ] T003 [P] Create `src/panaversity_fs/database/__init__.py` module init with exports for models and session factory.
-- [ ] T004 Update `src/panaversity_fs/config.py` to add `database_url` field with DATABASE_URL env var support. **Doc**: Fetch Pydantic docs via Context7 for settings patterns with env vars.
+- [X] T001 Use `uv add sqlalchemy asyncpg aiosqlite alembic prometheus-client hypothesis` to add all dependencies. Verify with `uv pip list | grep -E "sqlalchemy|asyncpg|aiosqlite|alembic|prometheus|hypothesis"`.
+- [X] T002 [P] Use `alembic init src/panaversity_fs/database/migrations` to scaffold Alembic migrations directory. **Doc**: Fetch Alembic docs via Context7 for async migration configuration. Configure `alembic.ini` at project root to point to migrations directory.
+- [X] T003 [P] Create `src/panaversity_fs/database/__init__.py` module init with exports for models and session factory.
+- [X] T004 Update `src/panaversity_fs/config.py` to add `database_url` field with DATABASE_URL env var support. **Doc**: Fetch Pydantic docs via Context7 for settings patterns with env vars.
 
 **Checkpoint**: Dependencies installed, project structure ready for database layer
 
@@ -35,25 +35,25 @@
 
 ### 2.1 Database Layer
 
-- [ ] T005 Create `src/panaversity_fs/database/models.py` with FileJournal and AuditLog SQLAlchemy models per spec entities. **Doc**: Fetch SQLAlchemy docs via Context7 for `DeclarativeBase`, `Mapped[]`, and async model patterns.
-- [ ] T006 Create `src/panaversity_fs/database/connection.py` with async engine factory and `get_session()` sessionmaker. **Doc**: Fetch SQLAlchemy docs via Context7 for `create_async_engine` and `async_sessionmaker` patterns.
-- [ ] T007 Configure `src/panaversity_fs/database/migrations/env.py` for async SQLAlchemy (file created by T002's `alembic init`). **Doc**: Fetch Alembic docs via Context7 for async `run_migrations_online()` configuration.
-- [ ] T008 Use `alembic revision --autogenerate -m "initial FileJournal and AuditLog schema"` to generate migration. Review generated file and manually add CHECK constraints (`agent_id != 'system'`, `agent_id != ''`) if autogenerate misses them. **Doc**: Fetch Alembic docs via Context7 for CHECK constraint syntax.
-- [ ] T009 [P] Create `tests/unit/test_journal.py` with FileJournal CRUD tests. **Doc**: Fetch pytest-asyncio docs via Context7 for async test fixtures.
+- [X] T005 Create `src/panaversity_fs/database/models.py` with FileJournal and AuditLog SQLAlchemy models per spec entities. **Doc**: Fetch SQLAlchemy docs via Context7 for `DeclarativeBase`, `Mapped[]`, and async model patterns.
+- [X] T006 Create `src/panaversity_fs/database/connection.py` with async engine factory and `get_session()` sessionmaker. **Doc**: Fetch SQLAlchemy docs via Context7 for `create_async_engine` and `async_sessionmaker` patterns.
+- [X] T007 Configure `src/panaversity_fs/database/migrations/env.py` for async SQLAlchemy (file created by T002's `alembic init`). **Doc**: Fetch Alembic docs via Context7 for async `run_migrations_online()` configuration.
+- [X] T008 Use `alembic revision --autogenerate -m "initial FileJournal and AuditLog schema"` to generate migration. Review generated file and manually add CHECK constraints (`agent_id != 'system'`, `agent_id != ''`) if autogenerate misses them. **Doc**: Fetch Alembic docs via Context7 for CHECK constraint syntax.
+- [X] T009 [P] Create `tests/unit/test_journal.py` with FileJournal CRUD tests. **Doc**: Fetch pytest-asyncio docs via Context7 for async test fixtures.
 
 ### 2.2 Path Validation
 
-- [ ] T010 [P] Create `src/panaversity_fs/path_utils.py` with CONTENT_PATH_PATTERN, ASSET_PATH_PATTERN regex constants per spec FR-007, FR-008.
-- [ ] T011 [P] Add `validate_content_path()`, `validate_asset_path()`, `validate_overlay_path()` functions to `src/panaversity_fs/path_utils.py` per spec interface.
-- [ ] T012 [P] Add path conversion helpers `convert_base_to_overlay()`, `convert_overlay_to_base()`, `extract_user_id_from_overlay()` to `src/panaversity_fs/path_utils.py`.
-- [ ] T013 [P] Update `src/panaversity_fs/errors.py` to add SchemaViolationError, HashRequiredError, ConflictError exception classes.
-- [ ] T014 [P] Create `tests/unit/test_path_utils.py` with regex validation edge cases including path traversal attacks (`..`, null bytes).
+- [X] T010 [P] Create `src/panaversity_fs/path_utils.py` with CONTENT_PATH_PATTERN, ASSET_PATH_PATTERN regex constants per spec FR-007, FR-008.
+- [X] T011 [P] Add `validate_content_path()`, `validate_asset_path()`, `validate_overlay_path()` functions to `src/panaversity_fs/path_utils.py` per spec interface.
+- [X] T012 [P] Add path conversion helpers `convert_base_to_overlay()`, `convert_overlay_to_base()`, `extract_user_id_from_overlay()` to `src/panaversity_fs/path_utils.py`.
+- [X] T013 [P] Update `src/panaversity_fs/errors.py` to add SchemaViolationError, HashRequiredError exception classes. (ConflictError already existed)
+- [X] T014 [P] Create `tests/unit/test_path_utils.py` with regex validation edge cases including path traversal attacks (`..`, null bytes).
 
 ### 2.3 Instrumentation
 
-- [ ] T015 [P] Create `src/panaversity_fs/metrics.py` with Prometheus registry, counters (write_total, archive_total), histograms (archive_duration_seconds, write_duration_seconds), gauges (archive_memory_bytes, journal_entries_total). **Doc**: Fetch prometheus-client docs via Context7 for Counter, Histogram, Gauge patterns.
-- [ ] T016 [P] Add `@instrument_write` and `@instrument_archive` decorators to `src/panaversity_fs/metrics.py`. **Doc**: Fetch prometheus-client docs via Context7 for decorator instrumentation patterns.
-- [ ] T017 [P] Create `tests/unit/test_metrics.py` with decorator behavior tests.
+- [X] T015 [P] Create `src/panaversity_fs/metrics.py` with Prometheus registry, counters (write_total, archive_total), histograms (archive_duration_seconds, write_duration_seconds), gauges (archive_memory_bytes, journal_entries_total). **Doc**: Fetch prometheus-client docs via Context7 for Counter, Histogram, Gauge patterns.
+- [X] T016 [P] Add `@instrument_write` and `@instrument_archive` decorators to `src/panaversity_fs/metrics.py`. **Doc**: Fetch prometheus-client docs via Context7 for decorator instrumentation patterns.
+- [X] T017 [P] Create `tests/unit/test_metrics.py` with decorator behavior tests.
 
 **Checkpoint**: Foundation ready - user story implementation can now begin
 
