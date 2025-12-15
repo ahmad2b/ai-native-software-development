@@ -33,9 +33,9 @@
 
 ### Root Configuration
 
-- [ ] T001 [US1] Use `pnpm add -D nx@latest @nx/js @nx/workspace` to install Nx dependencies at workspace root. **Doc**: Fetch Nx docs via Context7 for `nx init` patterns.
+- [X] T001 [US1] Use `pnpm add -D nx@latest @nx/js @nx/workspace` to install Nx dependencies at workspace root. **Doc**: Fetch Nx docs via Context7 for `nx init` patterns. ✅ Nx 22.2.3 installed
 
-- [ ] T002 [US1] Create `nx.json` at repository root with workspace configuration:
+- [X] T002 [US1] Create `nx.json` at repository root with workspace configuration: ✅
   ```json
   {
     "$schema": "./node_modules/nx/schemas/nx-schema.json",
@@ -56,7 +56,7 @@
   }
   ```
 
-- [ ] T003 [US1] Create `pnpm-workspace.yaml` at repository root:
+- [X] T003 [US1] Create `pnpm-workspace.yaml` at repository root: ✅
   ```yaml
   packages:
     - "apps/*"
@@ -64,7 +64,7 @@
     - "tools/*"
   ```
 
-- [ ] T004 [P] [US1] Create `.nxignore` at repository root excluding non-project paths:
+- [X] T004 [P] [US1] Create `.nxignore` at repository root excluding non-project paths: ✅
   ```
   # Documentation and specs
   docs/
@@ -82,13 +82,13 @@
   templates/
   ```
 
-- [ ] T005 [US1] Update root `package.json` with pnpm scripts:
+- [X] T005 [US1] Update root `package.json` with pnpm scripts: ✅
   - Add `"packageManager": "pnpm@9.12.0"`
   - Add scripts: `"nx": "nx"`, `"graph": "nx graph"`, `"affected": "nx affected"`
 
 ### Project Configuration Files (Placeholder Paths)
 
-- [ ] T006 [P] [US1] [US4] Create `apps/learn-app/project.json` for Docusaurus website:
+- [X] T006 [P] [US1] [US4] Create `apps/learn-app/project.json` for Docusaurus website: ✅
   ```json
   {
     "name": "learn-app",
@@ -122,7 +122,7 @@
   }
   ```
 
-- [ ] T007 [P] [US1] [US4] Create `apps/panaversity-fs-py/project.json` for Python MCP server using `nx:run-commands` executor:
+- [X] T007 [P] [US1] [US4] Create `apps/panaversity-fs-py/project.json` for Python MCP server using `nx:run-commands` executor: ✅
   ```json
   {
     "name": "panaversity-fs-py",
@@ -171,7 +171,7 @@
   }
   ```
 
-- [ ] T008 [P] [US1] Create `libs/docusaurus/remark-interactive-python/project.json`:
+- [X] T008 [P] [US1] Create `libs/docusaurus/remark-interactive-python/project.json`: ✅
   ```json
   {
     "name": "remark-interactive-python",
@@ -181,23 +181,23 @@
   }
   ```
 
-- [ ] T009 [P] [US1] Create `libs/docusaurus/remark-content-enhancements/project.json` (same pattern as T008)
+- [X] T009 [P] [US1] Create `libs/docusaurus/remark-content-enhancements/project.json` (same pattern as T008) ✅
 
-- [ ] T010 [P] [US1] Create `libs/docusaurus/plugin-og-image/project.json` (same pattern as T008)
+- [X] T010 [P] [US1] Create `libs/docusaurus/plugin-og-image/project.json` (same pattern as T008) ✅
 
-- [ ] T011 [P] [US1] Create `libs/docusaurus/plugin-structured-data/project.json` (same pattern as T008)
+- [X] T011 [P] [US1] Create `libs/docusaurus/plugin-structured-data/project.json` (same pattern as T008) ✅
 
-- [ ] T012 [P] [US1] Create `libs/docusaurus/summaries-plugin/project.json` (same pattern as T008)
+- [X] T012 [P] [US1] Create `libs/docusaurus/summaries-plugin/project.json` (same pattern as T008) ✅
 
-- [ ] T013 [P] [US1] Create `libs/docusaurus/panaversityfs-plugin/project.json` (same pattern as T008)
+- [X] T013 [P] [US1] Create `libs/docusaurus/panaversityfs-plugin/project.json` (same pattern as T008) ✅
 
-- [ ] T014 [P] [US1] Create `tools/scripts/project.json` for shared Python scripts
+- [X] T014 [P] [US1] Create `tools/scripts/project.json` for shared Python scripts ✅
 
 ### Phase 0 Validation
 
-- [ ] T015 [US1] Run `pnpm install` from repository root. Verify no errors.
+- [X] T015 [US1] Run `pnpm install` from repository root. Verify no errors. ✅
 
-- [ ] T016 [US1] [US4] Run `nx show projects` and verify output lists all 8 projects:
+- [X] T016 [US1] [US4] Run `nx show projects` and verify output lists all 8 projects: ✅ (9 projects - 8 + scripts)
   - learn-app
   - panaversity-fs-py
   - remark-interactive-python
@@ -207,9 +207,9 @@
   - summaries-plugin
   - panaversityfs-plugin
 
-- [ ] T017 [US1] [US4] Run `nx graph` and capture screenshot. Verify learn-app shows dependencies on 6 plugin libs.
+- [X] T017 [US1] [US4] Run `nx graph` and capture screenshot. Verify learn-app shows dependencies on 6 plugin libs. ✅
 
-- [ ] T018 [US5] Create git tag `migration-phase0-checkpoint` for rollback reference.
+- [X] T018 [US5] Create git tag `migration-phase0-checkpoint` for rollback reference. ✅
 
 **Phase 0 Checkpoint**: All 8 projects recognized by Nx. Build commands expected to fail (directories don't exist yet). Proceed to Phase 1.
 
