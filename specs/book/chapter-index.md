@@ -1,6 +1,6 @@
 # The AI Agent Factory: Chapter Index
 
-**91 chapters across 14 parts** (Updated 2025-12-25)
+**91 chapters across 14 parts** (Updated 2025-12-28)
 
 Reference this document when naming and organizing chapter files. Use the chapter number in directory names: `[chapter-number]-[chapter-name]/`
 
@@ -138,7 +138,7 @@ This book teaches you to build **Agent Factories**—production systems that tra
 
 ---
 
-## Part 6: AI Native Software Development (Chapters 33-48)
+## Part 6: AI Native Software Development (Chapters 33-49)
 
 **Building Custom Agents**: Agentic architectures, SDKs, and production patterns
 
@@ -155,13 +155,14 @@ This book teaches you to build **Agent Factories**—production systems that tra
 | 39  | Code Execution with MCP: Building More Efficient Agents | `39-code-execution-with-mcp/`                | Planned |
 | 40  | FastAPI for Agents (Primer)                             | `40-fastapi-for-agents-primer/`              | Planned |
 | 41  | Schema-Enforced Generation & Reliability Patterns       | `41-schema-enforced-generation-reliability/` | Planned |
-| 42  | Test-Driven Agent Development (TDD) & Contracts         | `42-test-driven-agent-development-tdd/`      | Planned |
-| 43  | Evals: Measuring Digital FTE Performance                | `43-evals/`                                  | Planned |
-| 44  | Memory & State for Agents                               | `44-memory-state-for-agents/`                | Planned |
-| 45  | Combo Agentic Pattern: Multi-Agent Orchestration        | `45-combo-agentic-pattern/`                  | Planned |
-| 46  | Vector Databases and RAG for AI Agents                  | `46-vector-databases-and-rag/`               | Planned |
-| 47  | Relational Databases for AI Agents                      | `47-relational-databases-for-ai-agents/`     | Planned |
-| 48  | Graph Databases and Graph RAG for AI Agents             | `48-graph-databases-and-graph-rag/`          | Planned |
+| 42  | Apps SDK: Building Interactive ChatGPT Apps             | `42-openai-apps-sdk/`                        | Implemented |
+| 43  | Agent Testing & Test-Driven Development (TDD)           | `43-agent-testing-tdd/`                      | Implemented |
+| 44  | Evaluation Frameworks                                   | `44-evaluation-frameworks/`                  | Implemented |
+| 45  | Memory & State for Agents                               | `45-memory-state-for-agents/`                | Planned |
+| 46  | Combo Agentic Pattern: Multi-Agent Orchestration        | `46-combo-agentic-pattern/`                  | Planned |
+| 47  | Vector Databases and RAG for AI Agents                  | `47-vector-databases-and-rag/`               | Planned |
+| 48  | Relational Databases for AI Agents                      | `48-relational-databases-for-ai-agents/`     | Planned |
+| 49  | Graph Databases and Graph RAG for AI Agents             | `49-graph-databases-and-graph-rag/`          | Planned |
 
 **Key Concepts**: SDK comparison, MCP as "USB for AI", agent evaluation, multi-agent patterns
 
@@ -175,10 +176,10 @@ This book teaches you to build **Agent Factories**—production systems that tra
 
 | #   | Chapter Title                                                      | File Name                                    | Status  |
 | --- | ------------------------------------------------------------------ | -------------------------------------------- | ------- |
-| 49  | FastAPI for AI Cloud-Native Services (Deep Dive)                   | `49-fastapi-cloud-native-deep-dive/`         | Planned |
-| 50  | Docker for AI Services: Building, Shipping, and Running Containers | `50-docker-for-ai-services/`                 | Planned |
-| 51  | Apache Kafka for Event-Driven AI Systems                           | `51-apache-kafka-event-driven-ai/`           | Planned |
-| 52  | Kubernetes for AI Services: Orchestrating Digital FTEs             | `52-kubernetes-for-ai-services/`             | Planned |
+| 49  | FastAPI for AI Cloud-Native Services (Deep Dive)                   | `49-fastapi-cloud-native-deep-dive/`         | Implemented |
+| 50  | Docker for AI Services: Building, Shipping, and Running Containers | `50-docker-for-ai-services/`                 | Implemented |
+| 51  | Apache Kafka for Event-Driven AI Systems                           | `51-apache-kafka-event-driven-ai/`           | Implemented |
+| 52  | Kubernetes for AI Services: Orchestrating Digital FTEs             | `52-kubernetes-for-ai-services/`             | Implemented |
 | 53  | CI/CD & Infrastructure-as-Code for AI Services                     | `53-cicd-infrastructure-as-code/`            | Planned |
 | 54  | Dapr for AI Microservices: Sidecar Building Blocks                 | `54-dapr-for-ai-microservices/`              | Planned |
 | 55  | Dapr Actors for Agentic State and Concurrency                      | `55-dapr-actors-agentic-state/`              | Planned |
@@ -342,4 +343,4 @@ This document provides chapter titles and topics. For exact file paths, naming c
 
 ---
 
-**Version**: Updated 2025-12-25 — Aligned with Agent Factory paradigm (Constitution v7.0.0). Updated Chapter 1 title to "The Agent Factory Paradigm". Added Learning Journey summary and Agent Factory framing throughout. Total 91 chapters across 14 parts (32 implemented, 59 planned).
+**Version**: Updated 2025-12-28 — Added Chapter 42: Apps SDK, renumbered Part 6 chapters 42-48 to 42-49. Total 91 chapters across 14 parts (38 implemented, 53 planned). Note: Chapter 49 appears in both Part 6 (Graph Databases) and Part 7 (FastAPI) - needs resolution.
