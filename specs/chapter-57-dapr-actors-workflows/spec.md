@@ -1,4 +1,4 @@
-# Chapter Specification: Chapter 59 - Dapr Actors & Workflows for Stateful Agents
+# Chapter Specification: Chapter 57 - Dapr Actors & Workflows for Stateful Agents
 
 **Part**: 7 (AI Cloud-Native Development)
 **Chapter**: 59

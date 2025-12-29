@@ -1,4 +1,4 @@
-# Specification Quality Checklist: Chapter 59 - Dapr Actors & Workflows
+# Specification Quality Checklist: Chapter 57 - Dapr Actors & Workflows
 
 **Purpose**: Validate specification completeness and quality before proceeding to planning
 **Created**: 2025-12-29
