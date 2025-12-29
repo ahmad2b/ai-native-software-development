@@ -1,6 +1,6 @@
 # The AI Agent Factory: Chapter Index
 
-**91 chapters across 14 parts** (Updated 2025-12-28)
+**90 chapters across 14 parts** (Updated 2025-12-29)
 
 Reference this document when naming and organizing chapter files. Use the chapter number in directory names: `[chapter-number]-[chapter-name]/`
 
@@ -33,11 +33,14 @@ This book teaches you to build **Agent Factories**—production systems that tra
 
 ## Implementation Status
 
-- **Implemented** (32 chapters): Chapters 1-14, 15-32
+- **Implemented** (37 chapters):
   - **Parts 1-3**: Complete (12 chapters: 1-12)
   - **Part 4 (SDD-RI Fundamentals)**: Complete (2 chapters: 13-14)
   - **Part 5 (Python Fundamentals)**: Complete (18 chapters: 15-32)
-- **Planned** (59 chapters): Chapters 33-91 are planned but not yet created
+  - **Part 7 (Cloud Native)**: Partial (5 chapters: 49-52, 54)
+- **Planned** (53 chapters): Remaining chapters in Parts 6, 7, 8-14
+
+**Skill-First Learning Pattern** (Part 7+): Each chapter starts with L00 "Build Your [X] Skill" where students create a skill BEFORE learning content. Every lesson ends with "Reflect on Your Skill" section. This produces sellable skill portfolios (Digital FTE components).
 
 ---
 
@@ -138,7 +141,7 @@ This book teaches you to build **Agent Factories**—production systems that tra
 
 ---
 
-## Part 6: AI Native Software Development (Chapters 33-49)
+## Part 6: AI Native Software Development (Chapters 33-48)
 
 **Building Custom Agents**: Agentic architectures, SDKs, and production patterns
 
@@ -155,39 +158,46 @@ This book teaches you to build **Agent Factories**—production systems that tra
 | 39  | Code Execution with MCP: Building More Efficient Agents | `39-code-execution-with-mcp/`                | Planned |
 | 40  | FastAPI for Agents (Primer)                             | `40-fastapi-for-agents-primer/`              | Planned |
 | 41  | Schema-Enforced Generation & Reliability Patterns       | `41-schema-enforced-generation-reliability/` | Planned |
-| 42  | Apps SDK: Building Interactive ChatGPT Apps             | `42-openai-apps-sdk/`                        | Implemented |
-| 43  | Agent Testing & Test-Driven Development (TDD)           | `43-agent-testing-tdd/`                      | Implemented |
-| 44  | Evaluation Frameworks                                   | `44-evaluation-frameworks/`                  | Implemented |
-| 45  | Memory & State for Agents                               | `45-memory-state-for-agents/`                | Planned |
-| 46  | Combo Agentic Pattern: Multi-Agent Orchestration        | `46-combo-agentic-pattern/`                  | Planned |
-| 47  | Vector Databases and RAG for AI Agents                  | `47-vector-databases-and-rag/`               | Planned |
-| 48  | Relational Databases for AI Agents                      | `48-relational-databases-for-ai-agents/`     | Planned |
-| 49  | Graph Databases and Graph RAG for AI Agents             | `49-graph-databases-and-graph-rag/`          | Planned |
+| 42  | Test-Driven Agent Development (TDD) & Contracts         | `42-test-driven-agent-development-tdd/`      | Planned |
+| 43  | Evals: Measuring Digital FTE Performance                | `43-evals/`                                  | Planned |
+| 44  | Memory & State for Agents                               | `44-memory-state-for-agents/`                | Planned |
+| 45  | Combo Agentic Pattern: Multi-Agent Orchestration        | `45-combo-agentic-pattern/`                  | Planned |
+| 46  | Vector Databases and RAG for AI Agents                  | `46-vector-databases-and-rag/`               | Planned |
+| 47  | Relational Databases for AI Agents                      | `47-relational-databases-for-ai-agents/`     | Planned |
+| 48  | Graph Databases and Graph RAG for AI Agents             | `48-graph-databases-and-graph-rag/`          | Planned |
 
 **Key Concepts**: SDK comparison, MCP as "USB for AI", agent evaluation, multi-agent patterns
 
 ---
 
-## Part 7: AI Cloud Native Development (Chapters 49-60)
+## Part 7: AI Cloud Native Development (Chapters 49-59)
 
 **Production deployment**: Infrastructure, containers, and operational excellence for Digital FTEs
 
 **Outcome**: Students can deploy and operate Digital FTEs at scale
 
-| #   | Chapter Title                                                      | File Name                                    | Status  |
-| --- | ------------------------------------------------------------------ | -------------------------------------------- | ------- |
-| 49  | FastAPI for AI Cloud-Native Services (Deep Dive)                   | `49-fastapi-cloud-native-deep-dive/`         | Implemented |
-| 50  | Docker for AI Services: Building, Shipping, and Running Containers | `50-docker-for-ai-services/`                 | Implemented |
-| 51  | Apache Kafka for Event-Driven AI Systems                           | `51-apache-kafka-event-driven-ai/`           | Implemented |
-| 52  | Kubernetes for AI Services: Orchestrating Digital FTEs             | `52-kubernetes-for-ai-services/`             | Implemented |
-| 53  | CI/CD & Infrastructure-as-Code for AI Services                     | `53-cicd-infrastructure-as-code/`            | Planned |
-| 54  | Dapr for AI Microservices: Sidecar Building Blocks                 | `54-dapr-for-ai-microservices/`              | Planned |
-| 55  | Dapr Actors for Agentic State and Concurrency                      | `55-dapr-actors-agentic-state/`              | Planned |
-| 56  | Dapr Workflows for Long-Running Orchestration                      | `56-dapr-workflows-long-running/`            | Planned |
-| 57  | Dapr Agents: Designing Agentic Services on Dapr                    | `57-dapr-agents-designing-agentic-services/` | Planned |
-| 58  | Observability, Cost & Performance Engineering                      | `58-observability-cost-performance/`         | Planned |
-| 59  | API Edge & Gateway for AI Services (Ingress/Kong)                  | `59-api-edge-gateway-for-ai-services/`       | Planned |
-| 60  | Security, Safety & Governance for Agentic Systems                  | `60-security-safety-governance/`             | Planned |
+**Skill-First Pattern**: Each chapter starts with L00 "Build Your [X] Skill" where students create a skill BEFORE learning content. This produces sellable skill portfolios (Digital FTE components).
+
+| #   | Chapter Title                                                      | File Name                           | Status      |
+| --- | ------------------------------------------------------------------ | ----------------------------------- | ----------- |
+| 49  | Docker for AI Services: Building, Shipping, and Running Containers | `49-docker-for-ai-services/`        | Implemented |
+| 50  | Kubernetes for AI Services: Orchestrating Digital FTEs             | `50-kubernetes-for-ai-services/`    | Implemented |
+| 51  | Helm Charts: Packaging Kubernetes Applications                     | `51-helm-charts/`                   | Implemented |
+| 52  | Event-Driven Architecture with Kafka                               | `52-event-driven-kafka/`            | Implemented |
+| 53  | Dapr Core: Sidecar Building Blocks for AI Microservices            | `53-dapr-core/`                     | Planned     |
+| 54  | CI/CD Pipelines & GitOps with ArgoCD                               | `54-cicd-gitops-argocd/`            | Implemented |
+| 55  | Observability, Cost & Performance Engineering                      | `55-observability-cost-engineering/`| Planned     |
+| 56  | API Gateway & Traffic Management                                   | `56-api-gateway-traffic/`           | Planned     |
+| 57  | Security, Safety & Governance for Agentic Systems                  | `57-security-governance/`           | Planned     |
+| 58  | Infrastructure as Code with Terraform                              | `58-infrastructure-as-code/`        | Planned     |
+| 59  | Dapr Actors & Workflows for Stateful Agents                        | `59-dapr-actors-workflows/`         | Planned     |
+
+**Skills produced by students** (Digital FTE components):
+- `docker-deployment` (Ch49)
+- `kubernetes-deployment` (Ch50)
+- `helm-chart` (Ch51)
+- `kafka-events` (Ch52)
+- `gitops-deployment` (Ch54)
 
 ---
 
@@ -343,4 +353,4 @@ This document provides chapter titles and topics. For exact file paths, naming c
 
 ---
 
-**Version**: Updated 2025-12-28 — Added Chapter 42: Apps SDK, renumbered Part 6 chapters 42-48 to 42-49. Total 91 chapters across 14 parts (38 implemented, 53 planned). Note: Chapter 49 appears in both Part 6 (Graph Databases) and Part 7 (FastAPI) - needs resolution.
+**Version**: Updated 2025-12-29 — Aligned Part 7 with actual implementation. Added Skill-First Learning Pattern documentation. Total 90 chapters across 14 parts (37 implemented, 53 planned).
