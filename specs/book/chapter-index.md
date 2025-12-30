@@ -1,6 +1,6 @@
 # The AI Agent Factory: Chapter Index
 
-**90 chapters across 14 parts** (Updated 2025-12-29)
+**96 chapters across 14 parts** (Updated 2025-12-30)
 
 Reference this document when naming and organizing chapter files. Use the chapter number in directory names: `[chapter-number]-[chapter-name]/`
 
@@ -33,12 +33,15 @@ This book teaches you to build **Agent Factories**—production systems that tra
 
 ## Implementation Status
 
-- **Implemented** (37 chapters):
+- **Implemented** (41 chapters):
   - **Parts 1-3**: Complete (12 chapters: 1-12)
   - **Part 4 (SDD-RI Fundamentals)**: Complete (2 chapters: 13-14)
   - **Part 5 (Python Fundamentals)**: Complete (18 chapters: 15-32)
-  - **Part 7 (Cloud Native)**: Partial (5 chapters: 49-52, 54)
-- **Planned** (53 chapters): Remaining chapters in Parts 6, 7, 8-14
+  - **Part 7 (Cloud Native)**: Partial (9 chapters: 49-57)
+    - Tier 1 Foundation: Complete (Ch49-54, Ch57)
+    - Tier 2 Enterprise: Ch55-56 complete, Ch58-60 planned
+    - Tier 3 Planetary: Ch61-65 planned
+- **Planned** (55 chapters): Remaining chapters in Parts 6, 7, 8-14
 
 **Skill-First Learning Pattern** (Part 7+): Each chapter starts with L00 "Build Your [X] Skill" where students create a skill BEFORE learning content. Every lesson ends with "Reflect on Your Skill" section. This produces sellable skill portfolios (Digital FTE components).
 
@@ -143,40 +146,78 @@ This book teaches you to build **Agent Factories**—production systems that tra
 
 ## Part 6: AI Native Software Development (Chapters 33-48)
 
-**Building Custom Agents**: Agentic architectures, SDKs, and production patterns
+**Building Custom Agents**: From single agent to distributed multi-agent fleets
 
-**Outcome**: Students can build production Custom Agents using major SDKs
+**Outcome**: Students can build, serve, persist, test, evaluate, and scale Custom Agents
 
-| #   | Chapter Title                                           | File Name                                    | Status  |
-| --- | ------------------------------------------------------- | -------------------------------------------- | ------- |
-| 33  | Introduction to AI Agents                               | `33-introduction-to-ai-agents/`              | Planned |
-| 34  | OpenAI Agents SDK: Building Digital FTEs                | `34-openai-agents-sdk-development/`          | Planned |
-| 35  | Google ADK: Building Digital FTEs                       | `35-google-adk-development/`                 | Planned |
-| 36  | Claude SDK: Building Digital FTEs                       | `36-anthropic-agents-kit-development/`       | Planned |
-| 37  | MCP Fundamentals: USB for AI Tools                      | `37-mcp-fundamentals/`                       | Planned |
-| 38  | MCP Server Development                                  | `38-mcp-server-development/`                 | Planned |
-| 39  | Code Execution with MCP: Building More Efficient Agents | `39-code-execution-with-mcp/`                | Planned |
-| 40  | FastAPI for Agents (Primer)                             | `40-fastapi-for-agents-primer/`              | Planned |
-| 41  | Schema-Enforced Generation & Reliability Patterns       | `41-schema-enforced-generation-reliability/` | Planned |
-| 42  | Test-Driven Agent Development (TDD) & Contracts         | `42-test-driven-agent-development-tdd/`      | Planned |
-| 43  | Evals: Measuring Digital FTE Performance                | `43-evals/`                                  | Planned |
-| 44  | Memory & State for Agents                               | `44-memory-state-for-agents/`                | Planned |
-| 45  | Combo Agentic Pattern: Multi-Agent Orchestration        | `45-combo-agentic-pattern/`                  | Planned |
-| 46  | Vector Databases and RAG for AI Agents                  | `46-vector-databases-and-rag/`               | Planned |
-| 47  | Relational Databases for AI Agents                      | `47-relational-databases-for-ai-agents/`     | Planned |
-| 48  | Graph Databases and Graph RAG for AI Agents             | `48-graph-databases-and-graph-rag/`          | Planned |
+**Learning Arc**:
+```
+Build Agents → Serve via APIs → Add Data Layer → Test → Evaluate → Scale to Fleets
+```
 
-**Key Concepts**: SDK comparison, MCP as "USB for AI", agent evaluation, multi-agent patterns
+### Phase 1: Build Agents (Ch 33-39)
+
+| #   | Chapter Title                                           | File Name                                    | Status      |
+| --- | ------------------------------------------------------- | -------------------------------------------- | ----------- |
+| 33  | Introduction to AI Agents                               | `33-introduction-to-ai-agents/`              | Implemented |
+| 34  | OpenAI Agents SDK: Building Digital FTEs                | `34-openai-agents-sdk/`                      | Implemented |
+| 35  | Google ADK: Building Digital FTEs                       | `35-google-adk-reliable-agents/`             | Implemented |
+| 36  | Claude Agent SDK: Building Digital FTEs                 | `36-anthropic-agents-kit-development/`       | Implemented |
+| 37  | MCP Fundamentals: USB for AI Tools                      | `37-mcp-fundamentals/`                       | Implemented |
+| 38  | MCP Server Development                                  | `38-custom-mcp-servers/`                     | Implemented |
+| 39  | Agent Skills & Code Execution                           | `39-agent-skills-mcp-code-execution/`        | Implemented |
+
+### Phase 2: Serve Agents (Ch 40-42)
+
+| #   | Chapter Title                                           | File Name                                    | Status      |
+| --- | ------------------------------------------------------- | -------------------------------------------- | ----------- |
+| 40  | FastAPI for Agents                                      | `40-fastapi-for-agents/`                     | Implemented |
+| 41  | ChatKit Server: Conversational Infrastructure           | `41-chatkit-server/`                         | Planned     |
+| 42  | OpenAI Apps SDK: Embeddable AI Apps                     | `42-openai-apps-sdk/`                        | Implemented |
+
+### Phase 3: Data Layer (Ch 43-45)
+
+Memory & state already covered in SDK chapters (Ch 34-36). This phase adds external data sources.
+
+| #   | Chapter Title                                           | File Name                                    | Status      |
+| --- | ------------------------------------------------------- | -------------------------------------------- | ----------- |
+| 43  | Vector Databases & RAG                                  | `43-vector-databases-rag/`                   | Planned     |
+| 44  | Relational Databases for Agents                         | `44-relational-databases/`                   | Planned     |
+| 45  | Graph Databases & Knowledge Graphs                      | `45-graph-databases-knowledge-graphs/`       | Planned     |
+
+### Phase 4: Quality Assurance (Ch 46-47)
+
+| #   | Chapter Title                                           | File Name                                    | Status      |
+| --- | ------------------------------------------------------- | -------------------------------------------- | ----------- |
+| 46  | TDD for Agents                                          | `46-tdd-for-agents/`                         | Planned     |
+| 47  | Evals: Measuring Agent Performance                      | `47-evals-agent-performance/`                | Planned     |
+
+### Phase 5: Scale - Multi-Agent Systems (Ch 48 - CAPSTONE)
+
+| #   | Chapter Title                                           | File Name                                    | Status      |
+| --- | ------------------------------------------------------- | -------------------------------------------- | ----------- |
+| 48  | Multi-Agent Distributed Systems                         | `48-multi-agent-distributed-systems/`        | Planned     |
+
+**Ch 48 Focus** (from Anthropic): Distributed workflows, agentic MapReduce, fan-out subagent patterns, throughput & reliability, cost control, monitoring agent fleets. This is the bridge to Part 7 cloud deployment.
+
+**Key Concepts**: SDK comparison, MCP as "USB for AI", RAG patterns, agent testing, agent evaluation, multi-agent orchestration
 
 ---
 
-## Part 7: AI Cloud Native Development (Chapters 49-59)
+## Part 7: AI Cloud Native Development (Chapters 49-65)
 
 **Production deployment**: Infrastructure, containers, and operational excellence for Digital FTEs
 
-**Outcome**: Students can deploy and operate Digital FTEs at scale
+**Outcome**: Students can deploy and operate Digital FTEs at scale (local → enterprise → planetary)
+
+**Three-Tier Progression**:
+- **Tier 1 (Foundation)**: Ch49-54, Ch57 — Local development, core patterns ✅
+- **Tier 2 (Enterprise)**: Ch55-56, Ch58-60 — Production-grade, enterprise requirements
+- **Tier 3 (Planetary)**: Ch61-65 — Global scale, multi-region operations
 
 **Skill-First Pattern**: Each chapter starts with L00 "Build Your [X] Skill" where students create a skill BEFORE learning content. This produces sellable skill portfolios (Digital FTE components).
+
+### Tier 1: Foundation (COMPLETE)
 
 | #   | Chapter Title                                                      | File Name                           | Status      |
 | --- | ------------------------------------------------------------------ | ----------------------------------- | ----------- |
@@ -184,24 +225,50 @@ This book teaches you to build **Agent Factories**—production systems that tra
 | 50  | Kubernetes for AI Services: Orchestrating Digital FTEs             | `50-kubernetes-for-ai-services/`    | Implemented |
 | 51  | Helm Charts: Packaging Kubernetes Applications                     | `51-helm-charts/`                   | Implemented |
 | 52  | Event-Driven Architecture with Kafka                               | `52-event-driven-kafka/`            | Implemented |
-| 53  | Dapr Core: Sidecar Building Blocks for AI Microservices            | `53-dapr-core/`                     | Planned     |
+| 53  | Dapr Core: Sidecar Building Blocks for AI Microservices            | `53-dapr-core/`                     | Implemented |
 | 54  | CI/CD Pipelines & GitOps with ArgoCD                               | `54-cicd-gitops-argocd/`            | Implemented |
-| 55  | Observability, Cost & Performance Engineering                      | `55-observability-cost-engineering/`| Planned     |
-| 56  | API Gateway & Traffic Management                                   | `56-api-gateway-traffic/`           | Planned     |
-| 57  | Security, Safety & Governance for Agentic Systems                  | `57-security-governance/`           | Planned     |
-| 58  | Infrastructure as Code with Terraform                              | `58-infrastructure-as-code/`        | Planned     |
-| 59  | Dapr Actors & Workflows for Stateful Agents                        | `59-dapr-actors-workflows/`         | Planned     |
+| 57  | Dapr Actors & Workflows for Stateful Agents                        | `57-dapr-actors-workflows/`         | Implemented |
+
+### Tier 2: Enterprise Production
+
+| #   | Chapter Title                                                      | File Name                              | Status      |
+| --- | ------------------------------------------------------------------ | -------------------------------------- | ----------- |
+| 55  | Observability & Cost Engineering                                   | `55-observability-cost-engineering/`   | Implemented |
+| 56  | Traffic Engineering: Gateway API, Envoy & Autoscaling              | `56-traffic-engineering/`              | Implemented |
+| 58  | Production Security & Compliance                                   | `58-production-security/`              | Planned     |
+| 59  | Cost & Disaster Recovery                                           | `59-cost-disaster-recovery/`           | Planned     |
+| 60  | Real Cloud Deployment (Civo, AWS, GCP, Azure)                      | `60-real-cloud-deployment/`            | Planned     |
+
+### Tier 3: Planetary Scale
+
+| #   | Chapter Title                                                      | File Name                              | Status      |
+| --- | ------------------------------------------------------------------ | -------------------------------------- | ----------- |
+| 61  | Multi-Cluster Federation                                           | `61-multi-cluster-federation/`         | Planned     |
+| 62  | Global Traffic Management                                          | `62-global-traffic-management/`        | Planned     |
+| 63  | Geo-Replication & Data Locality                                    | `63-geo-replication/`                  | Planned     |
+| 64  | Disaster Recovery & Business Continuity                            | `64-disaster-recovery/`                | Planned     |
+| 65  | Cost Optimization at Scale (FinOps)                                | `65-cost-optimization-finops/`         | Planned     |
 
 **Skills produced by students** (Digital FTE components):
 - `docker-deployment` (Ch49)
-- `kubernetes-deployment` (Ch50)
-- `helm-chart` (Ch51)
-- `kafka-events` (Ch52)
-- `gitops-deployment` (Ch54)
+- `kubernetes-deployer` (Ch50)
+- `helm-chart-architect` (Ch51)
+- `kafka-event-streaming` (Ch52)
+- `dapr-deployment` (Ch53, Ch57)
+- `gitops-automation` (Ch54)
+- `observability-cost-engineer` (Ch55)
+- `traffic-engineer` (Ch56)
+- `cloud-security` (Ch58)
+- `operational-excellence` (Ch59) — Cost + DR combined
+- `multi-cloud-deployer` (Ch60)
+- `federation-architect` (Ch61)
+- `global-traffic-manager` (Ch62)
+- `geo-replication-engineer` (Ch63)
+- `planetary-ops` (Ch64-65)
 
 ---
 
-## Part 8: Turing LLMOps — Proprietary Intelligence (Chapters 61-65)
+## Part 8: Turing LLMOps — Proprietary Intelligence (Chapters 66-70)
 
 **Custom model training**: Fine-tuning and deployment for competitive advantage
 
@@ -209,15 +276,15 @@ This book teaches you to build **Agent Factories**—production systems that tra
 
 | #   | Chapter Title                                                 | File Name                                      | Status  |
 | --- | ------------------------------------------------------------- | ---------------------------------------------- | ------- |
-| 61  | Proprietary Intelligence with Turing: Concepts & Setup        | `61-proprietary-intelligence-turing-concepts/` | Planned |
-| 62  | Turing Customization Workflow: Prepare → Fine-Tune → Evaluate | `62-turing-customization-workflow/`            | Planned |
-| 63  | Deploy & Integrate: Endpoints, SDKs, and Agent Backends       | `63-deploy-integrate-endpoints-sdks/`          | Planned |
-| 64  | Operate in Production: Monitoring, Cost, & Governance         | `64-operate-in-production-monitoring/`         | Planned |
-| 65  | LLMOps Best Practices & Case Studies                          | `65-llmops-best-practices/`                    | Planned |
+| 66  | Proprietary Intelligence with Turing: Concepts & Setup        | `66-proprietary-intelligence-turing-concepts/` | Planned |
+| 67  | Turing Customization Workflow: Prepare → Fine-Tune → Evaluate | `67-turing-customization-workflow/`            | Planned |
+| 68  | Deploy & Integrate: Endpoints, SDKs, and Agent Backends       | `68-deploy-integrate-endpoints-sdks/`          | Planned |
+| 69  | Operate in Production: Monitoring, Cost, & Governance         | `69-operate-in-production-monitoring/`         | Planned |
+| 70  | LLMOps Best Practices & Case Studies                          | `70-llmops-best-practices/`                    | Planned |
 
 ---
 
-## Part 9: TypeScript: The Language of Realtime and Interaction (Chapters 66-71)
+## Part 9: TypeScript: The Language of Realtime and Interaction (Chapters 71-76)
 
 **Full-stack AI development**: TypeScript for frontend and realtime systems
 
@@ -225,16 +292,16 @@ This book teaches you to build **Agent Factories**—production systems that tra
 
 | #   | Chapter Title                                                         | File Name                           | Status  |
 | --- | --------------------------------------------------------------------- | ----------------------------------- | ------- |
-| 66  | Modern TypeScript Essentials (types, unions, generics, narrowing)     | `66-modern-typescript-essentials/`  | Planned |
-| 67  | Tooling: tsconfig, esbuild/Vite, pnpm/Bun, project structure          | `67-tooling-tsconfig-esbuild-vite/` | Planned |
-| 68  | Async Patterns in TS: Promises, async/await, streams, AbortController | `68-async-patterns-in-ts/`          | Planned |
-| 69  | Node & Edge Runtimes (Node, Deno, Edge Functions)                     | `69-node-edge-runtimes/`            | Planned |
-| 70  | HTTP, SSE, and WebSockets in TS (clients & servers)                   | `70-http-sse-websockets-in-ts/`     | Planned |
-| 71  | Testing in TS (Vitest/Jest) and contract tests                        | `71-testing-in-ts-vitest-jest/`     | Planned |
+| 71  | Modern TypeScript Essentials (types, unions, generics, narrowing)     | `71-modern-typescript-essentials/`  | Planned |
+| 72  | Tooling: tsconfig, esbuild/Vite, pnpm/Bun, project structure          | `72-tooling-tsconfig-esbuild-vite/` | Planned |
+| 73  | Async Patterns in TS: Promises, async/await, streams, AbortController | `73-async-patterns-in-ts/`          | Planned |
+| 74  | Node & Edge Runtimes (Node, Deno, Edge Functions)                     | `74-node-edge-runtimes/`            | Planned |
+| 75  | HTTP, SSE, and WebSockets in TS (clients & servers)                   | `75-http-sse-websockets-in-ts/`     | Planned |
+| 76  | Testing in TS (Vitest/Jest) and contract tests                        | `76-testing-in-ts-vitest-jest/`     | Planned |
 
 ---
 
-## Part 10: Building Agentic Frontends (Chapters 72-74)
+## Part 10: Building Agentic Frontends (Chapters 77-79)
 
 **Frontend development for AI agents**: Chat UIs, streaming responses, deployment
 
@@ -242,13 +309,13 @@ This book teaches you to build **Agent Factories**—production systems that tra
 
 | #   | Chapter Title                                               | File Name                            | Status  |
 | --- | ----------------------------------------------------------- | ------------------------------------ | ------- |
-| 72  | Building Chat UIs (streaming tokens, tool call visualizers) | `72-building-chat-uis/`              | Planned |
-| 73  | Frontend Frameworks for Agents (server components, actions) | `73-frontend-frameworks-for-agents/` | Planned |
-| 74  | Deploy & Preview Environments (Vercel/Netlify patterns)     | `74-deploy-preview-environments/`    | Planned |
+| 77  | Building Chat UIs (streaming tokens, tool call visualizers) | `77-building-chat-uis/`              | Planned |
+| 78  | Frontend Frameworks for Agents (server components, actions) | `78-frontend-frameworks-for-agents/` | Planned |
+| 79  | Deploy & Preview Environments (Vercel/Netlify patterns)     | `79-deploy-preview-environments/`    | Planned |
 
 ---
 
-## Part 11: Building Realtime and Voice Agents (Chapters 75-80)
+## Part 11: Building Realtime and Voice Agents (Chapters 80-85)
 
 **Realtime communication**: Voice interfaces and multimodal interactions
 
@@ -256,16 +323,16 @@ This book teaches you to build **Agent Factories**—production systems that tra
 
 | #   | Chapter Title                                   | File Name                        | Status  |
 | --- | ----------------------------------------------- | -------------------------------- | ------- |
-| 75  | Realtime APIs for Agents (SSE/WebSocket/WebRTC) | `75-realtime-apis-for-agents/`   | Planned |
-| 76  | Browser Audio: Capture, VAD, Streaming          | `76-browser-audio-capture-vad/`  | Planned |
-| 77  | TTS/STT Pipelines (Latency, Duplex Streams)     | `77-tts-stt-pipelines/`          | Planned |
-| 78  | Multimodal IO (Image/Screen Capture, Tools)     | `78-multimodal-io-image-screen/` | Planned |
-| 79  | Mobile & PWA Considerations                     | `79-mobile-pwa-considerations/`  | Planned |
-| 80  | Load, Cost, and QoS for Realtime                | `80-load-cost-qos-realtime/`     | Planned |
+| 80  | Realtime APIs for Agents (SSE/WebSocket/WebRTC) | `80-realtime-apis-for-agents/`   | Planned |
+| 81  | Browser Audio: Capture, VAD, Streaming          | `81-browser-audio-capture-vad/`  | Planned |
+| 82  | TTS/STT Pipelines (Latency, Duplex Streams)     | `82-tts-stt-pipelines/`          | Planned |
+| 83  | Multimodal IO (Image/Screen Capture, Tools)     | `83-multimodal-io-image-screen/` | Planned |
+| 84  | Mobile & PWA Considerations                     | `84-mobile-pwa-considerations/`  | Planned |
+| 85  | Load, Cost, and QoS for Realtime                | `85-load-cost-qos-realtime/`     | Planned |
 
 ---
 
-## Part 12: Agentic AI is the Future (Chapters 81-83)
+## Part 12: Agentic AI is the Future (Chapters 86-88)
 
 **Emerging patterns**: Organizational transformation and agentic commerce
 
@@ -273,15 +340,15 @@ This book teaches you to build **Agent Factories**—production systems that tra
 
 | #   | Chapter Title                                                                 | File Name                     | Status  |
 | --- | ----------------------------------------------------------------------------- | ----------------------------- | ------- |
-| 81  | Agentic Web: Open (Nanda and A2A) and Closed Garden (OpenAI App and Apps SDK) | `81-agentic-web-open-closed/` | Planned |
-| 82  | Agentic Organizations: Building with Digital FTEs                             | `82-agentic-organizations/`   | Planned |
-| 83  | Agentic Commerce: Monetization Models for Digital FTEs                        | `83-agentic-commerce/`        | Planned |
+| 86  | Agentic Web: Open (Nanda and A2A) and Closed Garden (OpenAI App and Apps SDK) | `86-agentic-web-open-closed/` | Planned |
+| 87  | Agentic Organizations: Building with Digital FTEs                             | `87-agentic-organizations/`   | Planned |
+| 88  | Agentic Commerce: Monetization Models for Digital FTEs                        | `88-agentic-commerce/`        | Planned |
 
 **Key Concepts**: Four monetization models (Subscription, Success Fee, License, Marketplace)
 
 ---
 
-## Part 13: Physical AI & Humanoid Robotics (Chapter 84)
+## Part 13: Physical AI & Humanoid Robotics (Chapter 89)
 
 **Physical AI systems**: Extending Digital FTEs to the physical world
 
@@ -289,11 +356,11 @@ This book teaches you to build **Agent Factories**—production systems that tra
 
 | #   | Chapter Title                   | File Name                           | Status  |
 | --- | ------------------------------- | ----------------------------------- | ------- |
-| 84  | Physical AI & Humanoid Robotics | `84-physical-ai-humanoid-robotics/` | Planned |
+| 89  | Physical AI & Humanoid Robotics | `89-physical-ai-humanoid-robotics/` | Planned |
 
 ---
 
-## Part 14: Capstone — Building AI-Native Books (Chapters 85-91)
+## Part 14: Capstone — Building AI-Native Books (Chapters 90-96)
 
 **Build a Digital FTE**: Create the AI-native book platform you're learning from
 
@@ -301,13 +368,13 @@ This book teaches you to build **Agent Factories**—production systems that tra
 
 | #   | Chapter Title                                    | File Name                    | Status  |
 | --- | ------------------------------------------------ | ---------------------------- | ------- |
-| 85  | Building on Top of Docusaurus                    | `85-building-on-docusaurus/` | Planned |
-| 86  | Book Reusable Intelligence Components            | `86-book-rii-components/`    | Planned |
-| 87  | Storage — File System for Agents (PanaversityFS) | `87-storage-panaversityfs/`  | Planned |
-| 88  | Auth — BetterAuth Multi-Tenant SSO               | `88-auth-betterauth-sso/`    | Planned |
-| 89  | RAG — Using Qdrant                               | `89-rag-qdrant/`             | Planned |
-| 90  | Personalized Content                             | `90-personalized-content/`   | Planned |
-| 91  | Chatbot — ChatKit + Agents SDK                   | `91-chatbot-chatkit-agents/` | Planned |
+| 90  | Building on Top of Docusaurus                    | `90-building-on-docusaurus/` | Planned |
+| 91  | Book Reusable Intelligence Components            | `91-book-rii-components/`    | Planned |
+| 92  | Storage — File System for Agents (PanaversityFS) | `92-storage-panaversityfs/`  | Planned |
+| 93  | Auth — BetterAuth Multi-Tenant SSO               | `93-auth-betterauth-sso/`    | Planned |
+| 94  | RAG — Using Qdrant                               | `94-rag-qdrant/`             | Planned |
+| 95  | Personalized Content                             | `95-personalized-content/`   | Planned |
+| 96  | Chatbot — ChatKit + Agents SDK                   | `96-chatbot-chatkit-agents/` | Planned |
 
 **Capstone Outcome**: A complete, deployable Digital FTE that could be monetized via marketplace
 
@@ -353,4 +420,4 @@ This document provides chapter titles and topics. For exact file paths, naming c
 
 ---
 
-**Version**: Updated 2025-12-29 — Aligned Part 7 with actual implementation. Added Skill-First Learning Pattern documentation. Total 90 chapters across 14 parts (37 implemented, 53 planned).
+**Version**: Updated 2025-12-30 — Expanded Part 7 to 17 chapters (Ch49-65) with three-tier progression (Foundation → Enterprise → Planetary). Renumbered Parts 8-14. Total 96 chapters across 14 parts (40 implemented, 56 planned).
