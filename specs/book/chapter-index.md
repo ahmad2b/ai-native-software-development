@@ -148,11 +148,11 @@ This book teaches you to build **Agent Factories**—production systems that tra
 
 **Building Custom Agents**: From single agent to distributed multi-agent fleets
 
-**Outcome**: Students can build, serve, persist, test, and scale Custom Agents
+**Outcome**: Students can build, serve, persist, test, evaluate, and scale Custom Agents
 
 **Learning Arc**:
 ```
-Build Agents → Serve via APIs → Add Memory → Ensure Quality → Scale to Fleets
+Build Agents → Serve via APIs → Add Data Layer → Test → Evaluate → Scale to Fleets
 ```
 
 ### Phase 1: Build Agents (Ch 33-39)
@@ -175,20 +175,22 @@ Build Agents → Serve via APIs → Add Memory → Ensure Quality → Scale to F
 | 41  | ChatKit Server: Conversational Infrastructure           | `41-chatkit-server/`                         | Planned     |
 | 42  | OpenAI Apps SDK: Embeddable AI Apps                     | `42-openai-apps-sdk/`                        | Implemented |
 
-### Phase 3: Agent Memory - Data Layer (Ch 43-46)
+### Phase 3: Data Layer (Ch 43-45)
+
+Memory & state already covered in SDK chapters (Ch 34-36). This phase adds external data sources.
 
 | #   | Chapter Title                                           | File Name                                    | Status      |
 | --- | ------------------------------------------------------- | -------------------------------------------- | ----------- |
-| 43  | Memory & State Patterns for Agents                      | `43-memory-state-patterns/`                  | Planned     |
-| 44  | Vector Databases & RAG                                  | `44-vector-databases-rag/`                   | Planned     |
-| 45  | Relational Databases for Agents                         | `45-relational-databases/`                   | Planned     |
-| 46  | Graph Databases & Knowledge Graphs                      | `46-graph-databases-knowledge-graphs/`       | Planned     |
+| 43  | Vector Databases & RAG                                  | `43-vector-databases-rag/`                   | Planned     |
+| 44  | Relational Databases for Agents                         | `44-relational-databases/`                   | Planned     |
+| 45  | Graph Databases & Knowledge Graphs                      | `45-graph-databases-knowledge-graphs/`       | Planned     |
 
-### Phase 4: Quality Assurance (Ch 47)
+### Phase 4: Quality Assurance (Ch 46-47)
 
 | #   | Chapter Title                                           | File Name                                    | Status      |
 | --- | ------------------------------------------------------- | -------------------------------------------- | ----------- |
-| 47  | TDD & Evals for Agents                                  | `47-tdd-evals-for-agents/`                   | Planned     |
+| 46  | TDD for Agents                                          | `46-tdd-for-agents/`                         | Planned     |
+| 47  | Evals: Measuring Agent Performance                      | `47-evals-agent-performance/`                | Planned     |
 
 ### Phase 5: Scale - Multi-Agent Systems (Ch 48 - CAPSTONE)
 
@@ -198,7 +200,7 @@ Build Agents → Serve via APIs → Add Memory → Ensure Quality → Scale to F
 
 **Ch 48 Focus** (from Anthropic): Distributed workflows, agentic MapReduce, fan-out subagent patterns, throughput & reliability, cost control, monitoring agent fleets. This is the bridge to Part 7 cloud deployment.
 
-**Key Concepts**: SDK comparison, MCP as "USB for AI", memory patterns, agent evaluation, multi-agent orchestration
+**Key Concepts**: SDK comparison, MCP as "USB for AI", RAG patterns, agent testing, agent evaluation, multi-agent orchestration
 
 ---
 
