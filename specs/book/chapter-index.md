@@ -146,30 +146,59 @@ This book teaches you to build **Agent Factories**—production systems that tra
 
 ## Part 6: AI Native Software Development (Chapters 33-48)
 
-**Building Custom Agents**: Agentic architectures, SDKs, and production patterns
+**Building Custom Agents**: From single agent to distributed multi-agent fleets
 
-**Outcome**: Students can build production Custom Agents using major SDKs
+**Outcome**: Students can build, serve, persist, test, and scale Custom Agents
 
-| #   | Chapter Title                                           | File Name                                    | Status  |
-| --- | ------------------------------------------------------- | -------------------------------------------- | ------- |
-| 33  | Introduction to AI Agents                               | `33-introduction-to-ai-agents/`              | Planned |
-| 34  | OpenAI Agents SDK: Building Digital FTEs                | `34-openai-agents-sdk-development/`          | Planned |
-| 35  | Google ADK: Building Digital FTEs                       | `35-google-adk-development/`                 | Planned |
-| 36  | Claude SDK: Building Digital FTEs                       | `36-anthropic-agents-kit-development/`       | Planned |
-| 37  | MCP Fundamentals: USB for AI Tools                      | `37-mcp-fundamentals/`                       | Planned |
-| 38  | MCP Server Development                                  | `38-mcp-server-development/`                 | Planned |
-| 39  | Code Execution with MCP: Building More Efficient Agents | `39-code-execution-with-mcp/`                | Planned |
-| 40  | FastAPI for Agents (Primer)                             | `40-fastapi-for-agents-primer/`              | Planned |
-| 41  | Schema-Enforced Generation & Reliability Patterns       | `41-schema-enforced-generation-reliability/` | Planned |
-| 42  | Test-Driven Agent Development (TDD) & Contracts         | `42-test-driven-agent-development-tdd/`      | Planned |
-| 43  | Evals: Measuring Digital FTE Performance                | `43-evals/`                                  | Planned |
-| 44  | Memory & State for Agents                               | `44-memory-state-for-agents/`                | Planned |
-| 45  | Combo Agentic Pattern: Multi-Agent Orchestration        | `45-combo-agentic-pattern/`                  | Planned |
-| 46  | Vector Databases and RAG for AI Agents                  | `46-vector-databases-and-rag/`               | Planned |
-| 47  | Relational Databases for AI Agents                      | `47-relational-databases-for-ai-agents/`     | Planned |
-| 48  | Graph Databases and Graph RAG for AI Agents             | `48-graph-databases-and-graph-rag/`          | Planned |
+**Learning Arc**:
+```
+Build Agents → Serve via APIs → Add Memory → Ensure Quality → Scale to Fleets
+```
 
-**Key Concepts**: SDK comparison, MCP as "USB for AI", agent evaluation, multi-agent patterns
+### Phase 1: Build Agents (Ch 33-39)
+
+| #   | Chapter Title                                           | File Name                                    | Status      |
+| --- | ------------------------------------------------------- | -------------------------------------------- | ----------- |
+| 33  | Introduction to AI Agents                               | `33-introduction-to-ai-agents/`              | Implemented |
+| 34  | OpenAI Agents SDK: Building Digital FTEs                | `34-openai-agents-sdk/`                      | Implemented |
+| 35  | Google ADK: Building Digital FTEs                       | `35-google-adk-reliable-agents/`             | Implemented |
+| 36  | Claude Agent SDK: Building Digital FTEs                 | `36-anthropic-agents-kit-development/`       | Implemented |
+| 37  | MCP Fundamentals: USB for AI Tools                      | `37-mcp-fundamentals/`                       | Implemented |
+| 38  | MCP Server Development                                  | `38-custom-mcp-servers/`                     | Implemented |
+| 39  | Agent Skills & Code Execution                           | `39-agent-skills-mcp-code-execution/`        | Implemented |
+
+### Phase 2: Serve Agents (Ch 40-42)
+
+| #   | Chapter Title                                           | File Name                                    | Status      |
+| --- | ------------------------------------------------------- | -------------------------------------------- | ----------- |
+| 40  | FastAPI for Agents                                      | `40-fastapi-for-agents/`                     | Implemented |
+| 41  | ChatKit Server: Conversational Infrastructure           | `41-chatkit-server/`                         | Planned     |
+| 42  | OpenAI Apps SDK: Embeddable AI Apps                     | `42-openai-apps-sdk/`                        | Implemented |
+
+### Phase 3: Agent Memory - Data Layer (Ch 43-46)
+
+| #   | Chapter Title                                           | File Name                                    | Status      |
+| --- | ------------------------------------------------------- | -------------------------------------------- | ----------- |
+| 43  | Memory & State Patterns for Agents                      | `43-memory-state-patterns/`                  | Planned     |
+| 44  | Vector Databases & RAG                                  | `44-vector-databases-rag/`                   | Planned     |
+| 45  | Relational Databases for Agents                         | `45-relational-databases/`                   | Planned     |
+| 46  | Graph Databases & Knowledge Graphs                      | `46-graph-databases-knowledge-graphs/`       | Planned     |
+
+### Phase 4: Quality Assurance (Ch 47)
+
+| #   | Chapter Title                                           | File Name                                    | Status      |
+| --- | ------------------------------------------------------- | -------------------------------------------- | ----------- |
+| 47  | TDD & Evals for Agents                                  | `47-tdd-evals-for-agents/`                   | Planned     |
+
+### Phase 5: Scale - Multi-Agent Systems (Ch 48 - CAPSTONE)
+
+| #   | Chapter Title                                           | File Name                                    | Status      |
+| --- | ------------------------------------------------------- | -------------------------------------------- | ----------- |
+| 48  | Multi-Agent Distributed Systems                         | `48-multi-agent-distributed-systems/`        | Planned     |
+
+**Ch 48 Focus** (from Anthropic): Distributed workflows, agentic MapReduce, fan-out subagent patterns, throughput & reliability, cost control, monitoring agent fleets. This is the bridge to Part 7 cloud deployment.
+
+**Key Concepts**: SDK comparison, MCP as "USB for AI", memory patterns, agent evaluation, multi-agent orchestration
 
 ---
 
