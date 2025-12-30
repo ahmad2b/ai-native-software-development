@@ -204,8 +204,8 @@ This book teaches you to build **Agent Factories**—production systems that tra
 | --- | ------------------------------------------------------------------ | -------------------------------------- | ----------- |
 | 55  | Observability & Cost Engineering                                   | `55-observability-cost-engineering/`   | Implemented |
 | 56  | Traffic Engineering: Gateway API, Envoy & Autoscaling              | `56-traffic-engineering/`              | Planned     |
-| 58  | Load Testing & SRE Practices                                       | `58-load-testing-sre/`                 | Planned     |
-| 59  | Production Security & Compliance                                   | `59-production-security/`              | Planned     |
+| 58  | Production Security & Compliance                                   | `58-production-security/`              | Planned     |
+| 59  | Cost & Disaster Recovery                                           | `59-cost-disaster-recovery/`           | Planned     |
 | 60  | Real Cloud Deployment (Civo, AWS, GCP, Azure)                      | `60-real-cloud-deployment/`            | Planned     |
 
 ### Tier 3: Planetary Scale
@@ -227,13 +227,13 @@ This book teaches you to build **Agent Factories**—production systems that tra
 - `gitops-automation` (Ch54)
 - `observability-cost-engineer` (Ch55)
 - `traffic-engineer` (Ch56)
-- `sre-practice` (Ch58)
-- `cloud-security` (Ch59)
+- `cloud-security` (Ch58)
+- `operational-excellence` (Ch59) — Cost + DR combined
 - `multi-cloud-deployer` (Ch60)
 - `federation-architect` (Ch61)
 - `global-traffic-manager` (Ch62)
-- `disaster-recovery-planner` (Ch64)
-- `finops-practitioner` (Ch65)
+- `geo-replication-engineer` (Ch63)
+- `planetary-ops` (Ch64-65)
 
 ---
 

@@ -90,32 +90,10 @@ Production-grade deployment with enterprise requirements.
 
 ---
 
-### Ch58: Load Testing and SRE Practices
-**Status**: ❌ Not started
-**DACA Source**: `02_Enterprise/06_Load_Testing_and_Capacity_Planning/`
-**Estimated Lessons**: 10-12
-
-| Lesson | Topic | Source File |
-|--------|-------|-------------|
-| L00 | Build Your SRE Skill | - |
-| L01 | SRE Fundamentals | - |
-| L02 | Service Level Indicators (SLIs) | `Define-SLOs-and-SLAs.md` |
-| L03 | Service Level Objectives (SLOs) | `Define-SLOs-and-SLAs.md` |
-| L04 | Error Budgets | `Define-SLOs-and-SLAs.md` |
-| L05 | Load Testing with k6 | `Execute-Load-Test-k6-or-Locust.md` |
-| L06 | Load Testing with Locust | `Execute-Load-Test-k6-or-Locust.md` |
-| L07 | Capacity Planning | `Resource-Sizing-Guidelines.md` |
-| L08 | Resource Sizing | `Resource-Sizing-Guidelines.md` |
-| L09 | Performance Optimization | - |
-| L10 | Capstone: SRE for Task API | - |
-| L11 | Finalize Your SRE Skill | - |
-
----
-
-### Ch59: Production Security
+### Ch58: Production Security & Compliance
 **Status**: ❌ Not started
 **DACA Source**: `02_Enterprise/03_Security_and_Compliance/`
-**Estimated Lessons**: 10-12
+**Estimated Lessons**: 10
 
 | Lesson | Topic | Source File |
 |--------|-------|-------------|
@@ -124,20 +102,39 @@ Production-grade deployment with enterprise requirements.
 | L02 | RBAC Deep Dive | `RBAC-and-NetworkPolicies.md` |
 | L03 | NetworkPolicies | `RBAC-and-NetworkPolicies.md` |
 | L04 | Secrets Management | `Secrets-Management-Kubernetes.md` |
-| L05 | TLS with CertManager | `TLS-Certificates-using-CertManager.md` |
-| L06 | Pod Security Standards | - |
-| L07 | Image Scanning and Supply Chain | - |
-| L08 | Dapr Security (mTLS, Component Scopes) | - |
-| L09 | Compliance Fundamentals | - |
-| L10 | Capstone: Secure Task API | - |
-| L11 | Finalize Your Security Skill | - |
+| L05 | Pod Security Standards | - |
+| L06 | Image Scanning & Supply Chain | - |
+| L07 | Dapr Security (mTLS, Component Scopes) | - |
+| L08 | Compliance Fundamentals | - |
+| L09 | Capstone: Secure Task API | - |
+
+---
+
+### Ch59: Cost & Disaster Recovery
+**Status**: ❌ Not started
+**DACA Source**: `03_Planetary/03_Advanced_Autoscaling_and_Cost_Optimization/`, `03_Planetary/05_Disaster_Recovery_and_Compliance/`
+**Estimated Lessons**: 10
+**Student Skill**: `operational-excellence`
+
+| Lesson | Topic | Source File |
+|--------|-------|-------------|
+| L00 | Build Your Operational Excellence Skill | - |
+| L01 | Cloud Cost Fundamentals | - |
+| L02 | Right-Sizing with VPA | `Resource-Sizing-Guidelines.md` |
+| L03 | OpenCost/Kubecost Visibility | - |
+| L04 | FinOps Practices & Budget Alerts | - |
+| L05 | Backup Fundamentals (RTO vs RPO) | `Scheduled-Backup-and-Restore.md` |
+| L06 | Velero for K8s Backup/Restore | - |
+| L07 | Chaos Engineering Basics | - |
+| L08 | Data Sovereignty & Compliance | `Global-Security-Policies.md` |
+| L09 | Capstone: Resilient, Cost-Aware Task API | - |
 
 ---
 
 ### Ch60: Real Cloud Deployment
 **Status**: ❌ Not started
 **DACA Source**: `02_Enterprise/01_Cluster_Provisioning/`, `07_Provider_Spectrum_Review/`
-**Estimated Lessons**: 10-12
+**Estimated Lessons**: 10
 
 | Lesson | Topic | Source File |
 |--------|-------|-------------|
@@ -148,11 +145,9 @@ Production-grade deployment with enterprise requirements.
 | L04 | Node Pool Configuration | `Node-Pool-Configuration.md` |
 | L05 | Rancher Cluster Management | `Create-Cluster-Using-Rancher-and-Civo.md` |
 | L06 | AWS EKS Basics | - |
-| L07 | GCP GKE Basics | - |
-| L08 | Azure AKS Basics | - |
-| L09 | Cost Management | - |
-| L10 | Capstone: Deploy Task API to Cloud | - |
-| L11 | Finalize Your Cloud Skill | - |
+| L07 | GCP GKE / Azure AKS Overview | - |
+| L08 | Multi-Cloud Cost Management | - |
+| L09 | Capstone: Deploy Task API to Cloud | - |
 
 ---
 
