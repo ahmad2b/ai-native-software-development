@@ -61,23 +61,26 @@ Production-grade deployment with enterprise requirements.
 
 ---
 
-### Ch56: Autoscaling and Resilience
-**Status**: ❌ Placeholder only
-**DACA Source**: `02_Enterprise/04_Autoscaling_and_Resiliency/`
-**Estimated Lessons**: 8-10
+### Ch56: Traffic Engineering - Gateway API, Envoy & Autoscaling
+**Status**: ❌ Planned
+**DACA Source**: `02_Enterprise/04_Autoscaling_and_Resiliency/` + Official Envoy Gateway docs
+**Estimated Lessons**: 12-13
 
 | Lesson | Topic | Source File |
 |--------|-------|-------------|
-| L00 | Build Your Autoscaling Skill | - |
-| L01 | Scaling Fundamentals | - |
-| L02 | Horizontal Pod Autoscaler (HPA) | `HPA-Setup-for-Agents.md` |
-| L03 | Cluster Autoscaler | `Cluster-Autoscaler-Configuration.md` |
-| L04 | PodDisruptionBudgets | `PodDisruptionBudget-and-Readiness-Probes.md` |
-| L05 | Readiness and Liveness Probes | `PodDisruptionBudget-and-Readiness-Probes.md` |
-| L06 | KEDA Event-Driven Scaling | - |
-| L07 | Resilience Patterns (Circuit Breakers, Retries) | - |
-| L08 | Capstone: Auto-Scaling Task API | - |
-| L09 | Finalize Your Autoscaling Skill | - |
+| L00 | Build Your Traffic Engineering Skill | - |
+| L01 | Ingress Fundamentals | - |
+| L02 | Traefik Ingress Controller | Official Traefik docs |
+| L03 | Gateway API - The New Standard | gateway-api.sigs.k8s.io |
+| L04 | Envoy Gateway Setup | gateway.envoyproxy.io |
+| L05 | Traffic Routing with HTTPRoute | gateway.envoyproxy.io |
+| L06 | Rate Limiting & Circuit Breaking | BackendTrafficPolicy |
+| L07 | TLS Termination with CertManager | - |
+| L08 | Traffic Splitting (Canary, Blue-Green) | - |
+| L09 | Autoscaling (HPA, VPA, KEDA) | `HPA-Setup-for-Agents.md` |
+| L10 | Resilience Patterns | `PodDisruptionBudget-and-Readiness-Probes.md` |
+| L11 | Envoy AI Gateway for LLM Traffic | aigateway.envoyproxy.io |
+| L12 | Capstone: Production Traffic for Task API | - |
 
 ---
 
@@ -295,7 +298,7 @@ By completing Part 7, students will own:
 | `dapr-deployment` | Foundation | $100/hr |
 | `gitops-automation` | Foundation | $100/hr |
 | `observability-stack` | Enterprise | $125/hr |
-| `autoscaling-architect` | Enterprise | $125/hr |
+| `traffic-engineer` | Enterprise | $125/hr |
 | `sre-practice` | Enterprise | $150/hr |
 | `cloud-security` | Enterprise | $150/hr |
 | `multi-cloud-deployer` | Enterprise | $150/hr |
