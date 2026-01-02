@@ -42,10 +42,14 @@
 ## Notes
 
 - Specification complete and ready for `/sp.clarify` or `/sp.plan`
-- 13 user stories with concrete code examples from GitHub repo
-- 8 lessons covering full production mastery
-- 41 functional requirements (FR-001 to FR-041)
+- 14 user stories with concrete code examples from GitHub repo
+- 10 lessons covering full production mastery (L1-9 + Capstone)
+- 55 functional requirements (FR-001 to FR-055)
+- 12 success criteria including Digital FTE journey clarity
 - Pattern source table maps each concept to actual GitHub example
-- Key patterns: Context Objects, Agents as Tools, Cloning, Handoff Callbacks, Message Filters, Agent-Based Guardrails, Session Branching, Lifecycle Hooks, Tracing Spans, MCP Integration
+- Key patterns: Context Objects, Agents as Tools, Cloning, Handoff Callbacks, Message Filters, Agent-Based Guardrails, Session Branching, Lifecycle Hooks, Tracing Spans, MCP Integration, Agentic RAG
 - LiteLLM covered in Lesson 1 (FR-004, FR-005)
-- Capstone based on `customer_service/main.py` production example
+- MCP Integration covered in Lesson 8 (FR-036 to FR-041)
+- RAG with FileSearchTool covered in Lesson 9 (FR-042 to FR-047)
+- Capstone based on `customer_service/main.py` production example with monetization models
+- **Digital FTE Journey**: Chapter 34 = BUILD, Chapter 42 = DISTRIBUTE, Part 7 = DEPLOY

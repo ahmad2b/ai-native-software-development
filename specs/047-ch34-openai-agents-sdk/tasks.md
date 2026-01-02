@@ -1,383 +1,446 @@
-# Tasks: Chapter 34 — OpenAI Agents SDK (Production Mastery)
+# Tasks: Chapter 34 - OpenAI Agents SDK (Production Mastery)
 
 **Input**: Design documents from `/specs/047-ch34-openai-agents-sdk/`
-**Prerequisites**: plan.md, spec.md
-**Content Type**: Educational (8 lessons)
-**Base Output Path**: `/Users/mjs/Documents/code/panaversity-official/tutorsgpt/p7-c/apps/learn-app/docs/07-Building-and-Deploying-Agents/34-openai-agents-sdk/`
+**Prerequisites**: spec.md, plan.md
+**Constitution**: v7.0.0 (Agent Factory Paradigm)
+**Generated**: 2025-12-29
 
 ## Format: `[ID] [P?] [Lesson] Description`
 
-- **[P]**: Can run in parallel (different files, no dependencies)
-- **[Lesson]**: Maps to lesson number (L1-L8)
-- Include exact file paths in descriptions
+- **[P]**: Can run in parallel (independent lessons)
+- **[Lesson]**: Which lesson/phase this task belongs to (L00-L10, QUIZ)
+- Absolute file paths required for all output
 
-## Critical Subagent Requirements
+## Output Paths
 
-**Every lesson task MUST include**:
-1. **SUBAGENT**: content-implementer with absolute output path
-2. **VALIDATION**: educational-validator (MUST PASS before marking complete)
-3. **SKILLS**: learning-objectives, exercise-designer, fact-check-lesson
-4. **For L2+ lessons**: ai-collaborate-teaching skill for Three Roles
-
----
-
-## Phase 1: Setup (Chapter Infrastructure)
-
-**Purpose**: Chapter folder structure and shared resources
-
-- [ ] T001 Create chapter directory structure at `/Users/mjs/Documents/code/panaversity-official/tutorsgpt/p7-c/apps/learn-app/docs/07-Building-and-Deploying-Agents/34-openai-agents-sdk/`
-- [ ] T002 Create chapter README.md with overview, learning path, and prerequisites (links to Chapter 33)
-- [ ] T003 [P] Create `_category_.json` with chapter metadata (position: 34, label: "OpenAI Agents SDK")
-- [ ] T004 [P] Verify `building-with-openai-agents` skill exists at `.claude/skills/building-with-openai-agents/SKILL.md`
-
-**Checkpoint**: Chapter structure ready for lesson implementation
+```
+apps/learn-app/docs/06-AI-Native-Software-Development/34-openai-agents-sdk/
+├── 00-build-your-openai-agents-skill.md    # L00 - Skill Building
+├── 01-sdk-setup-first-agent.md              # L01
+├── 02-function-tools-context-objects.md     # L02
+├── 03-agents-as-tools-orchestration.md      # L03
+├── 04-handoffs-message-filtering.md         # L04
+├── 05-guardrails-agent-validation.md        # L05
+├── 06-sessions-conversation-memory.md       # L06
+├── 07-tracing-hooks-observability.md        # L07
+├── 08-mcp-integration.md                    # L08
+├── 09-rag-filesearchtool.md                 # L09
+├── 10-capstone-customer-support.md          # L10
+└── 11-chapter-quiz.md                       # Quiz
+```
 
 ---
 
-## Phase 2: Foundational (Blocking Prerequisites)
+## Phase 1: Setup & Skill Building (L00)
 
-**Purpose**: Ensure teaching resources and quality reference are accessible
+**Purpose**: Build OpenAI Agents SDK skill via Skill-First pattern before lesson implementation
 
-**CRITICAL**: No lesson implementation can begin until this phase is complete
+**Goal**: Create `openai-agents` skill grounded in official documentation
 
-- [ ] T005 Read quality reference lesson at `/Users/mjs/Documents/code/panaversity-official/tutorsgpt/p7-c/apps/learn-app/docs/01-Introducing-AI-Driven-Development/01-agent-factory-paradigm/01-digital-fte-revolution.md`
-- [ ] T006 [P] Verify GitHub examples cloned to `/tmp/openai-agents-python/` with key patterns:
-  - `examples/customer_service/main.py`
-  - `examples/agent_patterns/agents_as_tools.py`
-  - `examples/handoffs/message_filter.py`
-  - `examples/memory/advanced_sqlite_session_example.py`
-  - `examples/basic/lifecycle_example.py`
-- [ ] T007 [P] Verify OpenAI API key available for code execution validation: `export OPENAI_API_KEY`
-- [ ] T008 Confirm TaskManager agent from Chapter 33 available as running example base
+- [x] T001 [L00] Clone skills-lab fresh for Chapter 34 work
+  ```bash
+  cd /mnt/c/Users/HP/Documents/colearning-python
+  ```
 
-**Checkpoint**: Foundation ready - lesson implementation can now begin
+- [x] T002 [L00] Write LEARNING-SPEC.md for OpenAI Agents SDK skill
+  - What: Production agent development with OpenAI Agents SDK
+  - Why: Enable students to build Digital FTEs
+  - Success criteria: Can build multi-agent systems with context, handoffs, guardrails, sessions, tracing, MCP, RAG
+
+- [x] T003 [L00] Fetch OpenAI Agents SDK documentation via Context7
+  - **Skill**: `fetching-library-docs`
+  - Library: `openai-agents-python`
+  - Focus: Agent class, Runner, tools, handoffs, sessions, tracing, MCP
+
+- [x] T004 [L00] Research GitHub examples for production patterns
+  - Source: `github.com/openai/openai-agents-python/examples/`
+  - Patterns: customer_service, financial_research_agent, agent_patterns, memory, mcp
+
+- [x] T005 [L00] Create/update `building-with-openai-agents` skill
+  - **Skill**: `creating-skills`
+  - Location: `/mnt/c/Users/HP/Documents/colearning-python/.claude/skills/building-with-openai-agents/SKILL.md`
+  - Include: Persona, Logic, Context, MCP references, API patterns, Safety guardrails
+
+- [x] T006 [L00] Verify skill produces consistent outputs
+  - Test: Build simple agent with skill guidance
+  - Validate: Patterns match official examples
+
+**Checkpoint**: `building-with-openai-agents` skill ready for chapter implementation
 
 ---
 
-## Phase 3: Lesson 1 — SDK Setup & First Agent (Layer 1: Manual Foundation)
+## Phase 2: Layer 1 - Manual Foundation (L01-L02)
 
-**Goal**: Students set up SDK and run a functional agent without AI assistance
+**Purpose**: Students learn SDK primitives manually before AI collaboration
 
-**Independent Test**: Student can run `python hello_agent.py` and receive response
+**Layer**: 1 (Manual Foundation - NO AI collaboration yet)
 
-**Maps to Evals**: Foundation for all subsequent lessons
+### Lesson 1: SDK Setup & First Agent
 
-### Implementation for Lesson 1
+**Maps to**: US1 (First Agent with LiteLLM), FR-001 to FR-005, SC-001 (partial)
 
-- [ ] T009 [L1] Lesson 1: SDK Setup & First Agent
-  - **OUTPUT**: `/Users/mjs/Documents/code/panaversity-official/tutorsgpt/p7-c/apps/learn-app/docs/07-Building-and-Deploying-Agents/34-openai-agents-sdk/01-sdk-setup-first-agent.md`
+- [x] T007 [L01] Implement Lesson 1: SDK Setup & First Agent (530 lines)
   - **SUBAGENT**: content-implementer
+    - Output path: `/mnt/c/Users/HP/Documents/colearning-python/apps/learn-app/docs/06-AI-Native-Software-Development/34-openai-agents-sdk/01-sdk-setup-first-agent.md`
+    - Writes file directly (returns confirmation only, NOT full content)
     - Execute autonomously without confirmation
-    - Quality reference: `/Users/mjs/Documents/code/panaversity-official/tutorsgpt/p7-c/apps/learn-app/docs/01-Introducing-AI-Driven-Development/01-agent-factory-paradigm/01-digital-fte-revolution.md`
-    - Skill reference: `.claude/skills/building-with-openai-agents/SKILL.md`
+    - Quality reference: `/mnt/c/Users/HP/Documents/colearning-python/apps/learn-app/docs/01-Introducing-AI-Driven-Development/01-agent-factory-paradigm/01-the-2025-inflection-point.md`
   - **SKILLS**:
-    - `learning-objectives`: Generate measurable outcomes for SDK installation, Agent class, Runner.run_sync()
-    - `exercise-designer`: 3 exercises (hello world, custom instructions, LiteLLM alternative)
-    - `fact-check-lesson`: Verify all SDK imports and API patterns against official docs
+    - `learning-objectives` (generate measurable outcomes for B1 proficiency)
+    - `exercise-designer` (3 exercises: install SDK, run hello world, try LiteLLM)
   - **CONTENT REQUIREMENTS**:
-    - Full YAML frontmatter with skills metadata, cognitive load (6 concepts)
-    - LiteLLM alternative with `LitellmModel("anthropic/claude-3-5-sonnet")`
-    - No AI collaboration yet (Layer 1 = manual foundation)
-    - 3 "Try With AI" prompts for conceptual exploration only
-  - **VALIDATION**: educational-validator (MUST PASS before marking complete)
-  - **CODE EXECUTION**: All examples tested against live API with logs
+    - Show `pip install openai-agents` and `pip install "openai-agents[litellm]"`
+    - Demonstrate `OPENAI_API_KEY` configuration
+    - Implement basic Agent → Runner.run_sync() pattern
+    - Show LitellmModel with Anthropic
+    - Explain `set_tracing_disabled(True)` for non-OpenAI
+  - **Doc**: Fetch OpenAI Agents SDK docs via Context7 for Agent/Runner patterns
+  - **VALIDATION**: educational-validator reads file from disk (MUST PASS before marking complete)
 
-**Checkpoint**: Lesson 1 complete — students can create and run basic agents
+- [x] T008 [L01] Verify L01 code examples execute correctly
+  - Test all code blocks against live API
+  - Capture execution logs
 
----
+### Lesson 2: Function Tools & Context Objects
 
-## Phase 4: Lesson 2 — Function Tools & Context Objects (Layer 1: Manual Foundation)
+**Maps to**: US2 (Context Objects for State), FR-006 to FR-010, SC-001
 
-**Goal**: Students implement function tools and context objects manually
-
-**Independent Test**: Context persists across multiple tool calls
-
-**Maps to Evals**: SC-001 (context objects persist across tools and agents)
-
-### Implementation for Lesson 2
-
-- [ ] T010 [L2] Lesson 2: Function Tools & Context Objects
-  - **OUTPUT**: `/Users/mjs/Documents/code/panaversity-official/tutorsgpt/p7-c/apps/learn-app/docs/07-Building-and-Deploying-Agents/34-openai-agents-sdk/02-function-tools-context.md`
+- [x] T009 [L02] Implement Lesson 2: Function Tools & Context Objects (526 lines)
   - **SUBAGENT**: content-implementer
+    - Output path: `/mnt/c/Users/HP/Documents/colearning-python/apps/learn-app/docs/06-AI-Native-Software-Development/34-openai-agents-sdk/02-function-tools-context-objects.md`
+    - Writes file directly (returns confirmation only, NOT full content)
     - Execute autonomously without confirmation
-    - Quality reference: `/Users/mjs/Documents/code/panaversity-official/tutorsgpt/p7-c/apps/learn-app/docs/01-Introducing-AI-Driven-Development/01-agent-factory-paradigm/01-digital-fte-revolution.md`
-    - GitHub pattern: `/tmp/openai-agents-python/examples/customer_service/main.py` (AirlineAgentContext)
+    - Quality reference: same as T007
   - **SKILLS**:
-    - `learning-objectives`: Generate outcomes for @function_tool, Pydantic context, state mutations
-    - `exercise-designer`: 3 exercises (basic tool, context model, TaskManager context)
-    - `fact-check-lesson`: Verify RunContextWrapper patterns against SDK docs
+    - `learning-objectives` (B1 proficiency)
+    - `exercise-designer` (3 exercises: @function_tool, Pydantic context, TaskManagerContext)
   - **CONTENT REQUIREMENTS**:
-    - Full YAML frontmatter with skills metadata, cognitive load (7 concepts)
-    - TaskManagerContext Pydantic model as running example
-    - No AI collaboration yet (Layer 1 = manual foundation)
-    - Code from `examples/basic/tools.py` as reference
-  - **VALIDATION**: educational-validator (MUST PASS before marking complete)
-  - **CODE EXECUTION**: All examples tested against live API with logs
+    - Implement @function_tool with type hints and docstrings
+    - Create TaskManagerContext Pydantic model
+    - Demonstrate `RunContextWrapper[ContextType]` in tool signature
+    - Show context mutations persisting across tool calls
+    - Build TaskManager with context tracking
+  - **Doc**: Fetch OpenAI Agents SDK docs via Context7 for function_tool decorator
+  - **VALIDATION**: educational-validator (MUST PASS)
 
-**Checkpoint**: Lesson 2 complete — students understand context persistence pattern
+- [x] T010 [L02] Verify L02 code examples execute correctly
+  - Test context persistence patterns
+  - Capture execution logs
+
+**Checkpoint**: Layer 1 complete - students have manual SDK foundation
 
 ---
 
-## Phase 5: Lesson 3 — Agents as Tools & Orchestration (Layer 2: AI Collaboration)
+## Phase 3: Layer 2 - AI Collaboration (L03-L07)
 
-**Goal**: Students build orchestrator with sub-agents using AI collaboration
+**Purpose**: Students experience Three Roles (Teacher/Student/Co-Worker) through practice
 
-**Independent Test**: Manager agent coordinates 3+ specialist agents
+**Layer**: 2 (AI Collaboration - Three Roles demonstrations, INVISIBLE framework)
 
-**Maps to Evals**: SC-002 (orchestrator with 3+ sub-agents as tools)
+### Lesson 3: Agents as Tools & Orchestration
 
-### Implementation for Lesson 3
+**Maps to**: US3 (Agents as Tools), US4 (Agent Cloning), FR-011 to FR-015, SC-002
 
-- [ ] T011 [L3] Lesson 3: Agents as Tools & Orchestration
-  - **OUTPUT**: `/Users/mjs/Documents/code/panaversity-official/tutorsgpt/p7-c/apps/learn-app/docs/07-Building-and-Deploying-Agents/34-openai-agents-sdk/03-agents-as-tools.md`
+- [ ] T011 [L03] Implement Lesson 3: Agents as Tools & Orchestration
   - **SUBAGENT**: content-implementer
+    - Output path: `/mnt/c/Users/HP/Documents/colearning-python/apps/learn-app/docs/06-AI-Native-Software-Development/34-openai-agents-sdk/03-agents-as-tools-orchestration.md`
+    - Writes file directly (returns confirmation only, NOT full content)
     - Execute autonomously without confirmation
-    - Quality reference: `/Users/mjs/Documents/code/panaversity-official/tutorsgpt/p7-c/apps/learn-app/docs/01-Introducing-AI-Driven-Development/01-agent-factory-paradigm/01-digital-fte-revolution.md`
-    - GitHub patterns:
-      - `/tmp/openai-agents-python/examples/agent_patterns/agents_as_tools.py`
-      - `/tmp/openai-agents-python/examples/financial_research_agent/manager.py`
   - **SKILLS**:
-    - `learning-objectives`: Generate outcomes for agent.as_tool(), custom_output_extractor, clone()
-    - `exercise-designer`: 3 exercises (basic agent tool, custom extractor, TaskManager orchestrator)
-    - `ai-collaborate-teaching`: Design Three Roles section:
-      - AI as Teacher: Suggests agent.as_tool() pattern
-      - AI as Student: Adapts to information needs
-      - Co-Worker: Converges on dynamic composition
-    - `fact-check-lesson`: Verify patterns against SDK docs
+    - `learning-objectives` (B1-B2 proficiency)
+    - `exercise-designer` (3 exercises)
+    - `ai-collaborate-teaching` (Three Roles: Teacher suggests patterns, Student validates, Co-Worker iterates)
   - **CONTENT REQUIREMENTS**:
-    - Full YAML frontmatter with skills metadata, cognitive load (5 concepts)
-    - Three Roles demonstrated WITHOUT meta-commentary
-    - TaskManager as planning/execution/validation orchestrator
-    - Framework invisibility: No "AI as Teacher" labels in content
-  - **VALIDATION**: educational-validator (MUST PASS before marking complete)
-  - **CODE EXECUTION**: All examples tested against live API with logs
+    - Demonstrate `agent.as_tool(tool_name, tool_description)`
+    - Implement `custom_output_extractor` for structured outputs
+    - Show orchestrator pattern (manager calls sub-agents)
+    - Demonstrate `agent.clone(tools=[...])` for dynamic composition
+    - Contrast with handoff pattern (who owns conversation)
+  - **THREE ROLES** (invisible, no framework labels):
+    - AI as Teacher: Suggests agent.as_tool() pattern
+    - AI as Student: Learns student's information needs
+    - Co-Worker: Iterates toward dynamic composition
+  - **Doc**: Fetch financial_research_agent example patterns
+  - **VALIDATION**: educational-validator (MUST PASS)
 
-**Checkpoint**: Lesson 3 complete — students can compose multi-agent systems
+- [ ] T012 [L03] Verify L03 code examples execute correctly
 
----
+### Lesson 4: Handoffs & Message Filtering
 
-## Phase 6: Lesson 4 — Handoffs & Message Filtering (Layer 2: AI Collaboration)
+**Maps to**: US5 (Handoff Callbacks), US6 (Message Filtering), FR-016 to FR-020, SC-003
 
-**Goal**: Students implement handoffs with callbacks and message filtering
-
-**Independent Test**: Handoff injects runtime context before agent transfer
-
-**Maps to Evals**: SC-003 (handoff with callback that injects runtime data)
-
-### Implementation for Lesson 4
-
-- [ ] T012 [L4] Lesson 4: Handoffs & Message Filtering
-  - **OUTPUT**: `/Users/mjs/Documents/code/panaversity-official/tutorsgpt/p7-c/apps/learn-app/docs/07-Building-and-Deploying-Agents/34-openai-agents-sdk/04-handoffs-filtering.md`
+- [ ] T013 [L04] Implement Lesson 4: Handoffs & Message Filtering
   - **SUBAGENT**: content-implementer
+    - Output path: `/mnt/c/Users/HP/Documents/colearning-python/apps/learn-app/docs/06-AI-Native-Software-Development/34-openai-agents-sdk/04-handoffs-message-filtering.md`
+    - Writes file directly (returns confirmation only, NOT full content)
     - Execute autonomously without confirmation
-    - Quality reference: `/Users/mjs/Documents/code/panaversity-official/tutorsgpt/p7-c/apps/learn-app/docs/01-Introducing-AI-Driven-Development/01-agent-factory-paradigm/01-digital-fte-revolution.md`
-    - GitHub patterns:
-      - `/tmp/openai-agents-python/examples/handoffs/message_filter.py`
-      - `/tmp/openai-agents-python/examples/customer_service/main.py`
   - **SKILLS**:
-    - `learning-objectives`: Generate outcomes for handoff(), on_handoff, HandoffInputData
-    - `exercise-designer`: 3 exercises (basic handoff, callback injection, bidirectional)
-    - `ai-collaborate-teaching`: Design Three Roles section:
-      - AI as Teacher: Teaches on_handoff callbacks
-      - AI as Student: Learns filtering semantics
-      - Co-Worker: Discovers bidirectional handoffs
-    - `fact-check-lesson`: Verify handoff_filters utilities against SDK
+    - `learning-objectives` (B1-B2)
+    - `exercise-designer` (3 exercises)
+    - `ai-collaborate-teaching` (Three Roles)
   - **CONTENT REQUIREMENTS**:
-    - Full YAML frontmatter with skills metadata, cognitive load (6 concepts)
-    - Three Roles demonstrated WITHOUT meta-commentary
-    - TaskManager handoffs between planning/execution agents
-    - Spanish handoff example from message_filter.py
-  - **VALIDATION**: educational-validator (MUST PASS before marking complete)
-  - **CODE EXECUTION**: All examples tested against live API with logs
+    - Implement basic handoffs list: `handoffs=[agent1, agent2]`
+    - Demonstrate `handoff(agent, on_handoff=callback)` pattern
+    - Implement `input_filter` with `HandoffInputData`
+    - Show `handoff_filters.remove_all_tools` usage
+    - Demonstrate bidirectional handoffs (specialist → triage)
+  - **Doc**: Fetch handoffs/message_filter.py example patterns
+  - **VALIDATION**: educational-validator (MUST PASS)
 
-**Checkpoint**: Lesson 4 complete — students understand handoff patterns
+- [ ] T014 [L04] Verify L04 code examples execute correctly
 
----
+### Lesson 5: Guardrails & Agent-Based Validation
 
-## Phase 7: Lesson 5 — Guardrails & Agent-Based Validation (Layer 2: AI Collaboration)
+**Maps to**: US7 (Agent-Based Guardrails), FR-021 to FR-025, SC-004
 
-**Goal**: Students implement agent-based guardrails with structured output
-
-**Independent Test**: Guardrail agent detects and blocks invalid input with reasoning
-
-**Maps to Evals**: SC-004 (agent-based guardrail with structured output)
-
-### Implementation for Lesson 5
-
-- [ ] T013 [L5] Lesson 5: Guardrails & Agent-Based Validation
-  - **OUTPUT**: `/Users/mjs/Documents/code/panaversity-official/tutorsgpt/p7-c/apps/learn-app/docs/07-Building-and-Deploying-Agents/34-openai-agents-sdk/05-guardrails-validation.md`
+- [ ] T015 [L05] Implement Lesson 5: Guardrails & Agent-Based Validation
   - **SUBAGENT**: content-implementer
+    - Output path: `/mnt/c/Users/HP/Documents/colearning-python/apps/learn-app/docs/06-AI-Native-Software-Development/34-openai-agents-sdk/05-guardrails-agent-validation.md`
+    - Writes file directly (returns confirmation only, NOT full content)
     - Execute autonomously without confirmation
-    - Quality reference: `/Users/mjs/Documents/code/panaversity-official/tutorsgpt/p7-c/apps/learn-app/docs/01-Introducing-AI-Driven-Development/01-agent-factory-paradigm/01-digital-fte-revolution.md`
-    - GitHub patterns:
-      - `/tmp/openai-agents-python/examples/agent_patterns/input_guardrails.py`
-      - `/tmp/openai-agents-python/examples/agent_patterns/output_guardrails.py`
   - **SKILLS**:
-    - `learning-objectives`: Generate outcomes for @input_guardrail, @output_guardrail, agent-based validation
-    - `exercise-designer`: 3 exercises (simple guard, agent guard, PII detector)
-    - `ai-collaborate-teaching`: Design Three Roles section:
-      - AI as Teacher: Teaches agent-based validation
-      - AI as Student: Learns semantic distinctions
-      - Co-Worker: Discovers user-friendly messages
-    - `fact-check-lesson`: Verify GuardrailFunctionOutput against SDK
+    - `learning-objectives` (B2)
+    - `exercise-designer` (3 exercises)
+    - `ai-collaborate-teaching` (Three Roles)
   - **CONTENT REQUIREMENTS**:
-    - Full YAML frontmatter with skills metadata, cognitive load (6 concepts)
-    - Three Roles demonstrated WITHOUT meta-commentary
-    - TaskManager input validation guardrail
-    - Exception handling: InputGuardrailTripwireTriggered
-  - **VALIDATION**: educational-validator (MUST PASS before marking complete)
-  - **CODE EXECUTION**: All examples tested against live API with logs
+    - Implement `@input_guardrail` with tripwire
+    - Implement `@output_guardrail` with structured output check
+    - Demonstrate agent-based guardrail (guardrail calls agent)
+    - Handle `InputGuardrailTripwireTriggered` exception
+    - Show practical PII/topic detection example
+  - **Doc**: Fetch agent_patterns/input_guardrails.py example
+  - **VALIDATION**: educational-validator (MUST PASS)
 
-**Checkpoint**: Lesson 5 complete — students can implement production guardrails
+- [ ] T016 [L05] Verify L05 code examples execute correctly
 
----
+### Lesson 6: Sessions & Conversation Memory
 
-## Phase 8: Lesson 6 — Sessions & Conversation Memory (Layer 2: AI Collaboration)
+**Maps to**: US8 (SQLite Sessions), US9 (Advanced Sessions), FR-026 to FR-030, SC-005
 
-**Goal**: Students persist conversations with AdvancedSQLiteSession and branching
-
-**Independent Test**: Conversation branches correctly, history retrieved per branch
-
-**Maps to Evals**: SC-005 (AdvancedSQLiteSession with branching)
-
-### Implementation for Lesson 6
-
-- [ ] T014 [L6] Lesson 6: Sessions & Conversation Memory
-  - **OUTPUT**: `/Users/mjs/Documents/code/panaversity-official/tutorsgpt/p7-c/apps/learn-app/docs/07-Building-and-Deploying-Agents/34-openai-agents-sdk/06-sessions-memory.md`
+- [ ] T017 [L06] Implement Lesson 6: Sessions & Conversation Memory
   - **SUBAGENT**: content-implementer
+    - Output path: `/mnt/c/Users/HP/Documents/colearning-python/apps/learn-app/docs/06-AI-Native-Software-Development/34-openai-agents-sdk/06-sessions-conversation-memory.md`
+    - Writes file directly (returns confirmation only, NOT full content)
     - Execute autonomously without confirmation
-    - Quality reference: `/Users/mjs/Documents/code/panaversity-official/tutorsgpt/p7-c/apps/learn-app/docs/01-Introducing-AI-Driven-Development/01-agent-factory-paradigm/01-digital-fte-revolution.md`
-    - GitHub patterns:
-      - `/tmp/openai-agents-python/examples/memory/sqlite_session_example.py`
-      - `/tmp/openai-agents-python/examples/memory/advanced_sqlite_session_example.py`
   - **SKILLS**:
-    - `learning-objectives`: Generate outcomes for SQLiteSession, AdvancedSQLiteSession, branching
-    - `exercise-designer`: 3 exercises (basic session, usage tracking, branching)
-    - `ai-collaborate-teaching`: Design Three Roles section:
-      - AI as Teacher: Teaches AdvancedSQLiteSession
-      - AI as Student: Learns reliability requirements
-      - Co-Worker: Discovers efficient branching
-    - `fact-check-lesson`: Verify store_run_usage(), create_branch_from_turn() against SDK
+    - `learning-objectives` (B2)
+    - `exercise-designer` (3 exercises)
+    - `ai-collaborate-teaching` (Three Roles)
   - **CONTENT REQUIREMENTS**:
-    - Full YAML frontmatter with skills metadata, cognitive load (6 concepts)
-    - Three Roles demonstrated WITHOUT meta-commentary
-    - TaskManager with session persistence per user
-    - Branch switching demonstration
-  - **VALIDATION**: educational-validator (MUST PASS before marking complete)
-  - **CODE EXECUTION**: All examples tested against live API with logs
+    - Implement `SQLiteSession(session_id)` basic usage
+    - Show file-based persistence: `SQLiteSession(id, "file.db")`
+    - Demonstrate `session.get_items(limit=N)`
+    - Implement `AdvancedSQLiteSession` with usage tracking
+    - Show conversation branching with `create_branch_from_turn()`
+  - **Doc**: Fetch memory/sqlite_session_example.py patterns
+  - **VALIDATION**: educational-validator (MUST PASS)
 
-**Checkpoint**: Lesson 6 complete — students can persist and branch conversations
+- [ ] T018 [L06] Verify L06 code examples execute correctly
 
----
+### Lesson 7: Tracing, Hooks & Observability
 
-## Phase 9: Lesson 7 — Tracing, Hooks & Observability (Layer 2+3: AI Collaboration + Intelligence Design)
+**Maps to**: US10 (Lifecycle Hooks), US11 (Tracing), FR-031 to FR-035, SC-006, SC-007
 
-**Goal**: Students implement lifecycle hooks and multi-agent tracing, create reusable skill
-
-**Independent Test**: Complete trace visible in OpenAI dashboard with custom spans
-
-**Maps to Evals**: SC-006 (RunHooks with usage tracking), SC-007 (multi-agent trace)
-
-### Implementation for Lesson 7
-
-- [ ] T015 [L7] Lesson 7: Tracing, Hooks & Observability
-  - **OUTPUT**: `/Users/mjs/Documents/code/panaversity-official/tutorsgpt/p7-c/apps/learn-app/docs/07-Building-and-Deploying-Agents/34-openai-agents-sdk/07-tracing-observability.md`
+- [ ] T019 [L07] Implement Lesson 7: Tracing, Hooks & Observability
   - **SUBAGENT**: content-implementer
+    - Output path: `/mnt/c/Users/HP/Documents/colearning-python/apps/learn-app/docs/06-AI-Native-Software-Development/34-openai-agents-sdk/07-tracing-hooks-observability.md`
+    - Writes file directly (returns confirmation only, NOT full content)
     - Execute autonomously without confirmation
-    - Quality reference: `/Users/mjs/Documents/code/panaversity-official/tutorsgpt/p7-c/apps/learn-app/docs/01-Introducing-AI-Driven-Development/01-agent-factory-paradigm/01-digital-fte-revolution.md`
-    - GitHub patterns:
-      - `/tmp/openai-agents-python/examples/basic/lifecycle_example.py`
-      - `/tmp/openai-agents-python/examples/agent_patterns/deterministic.py`
   - **SKILLS**:
-    - `learning-objectives`: Generate outcomes for RunHooks, trace(), custom_span(), group_id
-    - `exercise-designer`: 3 exercises (lifecycle logging, custom spans, trace correlation)
-    - `ai-collaborate-teaching`: Design Three Roles section:
-      - AI as Teacher: Teaches observability patterns
-      - AI as Student: Learns noise reduction
-      - Co-Worker: Discovers trace correlation
-    - `fact-check-lesson`: Verify gen_trace_id(), context.usage against SDK
+    - `learning-objectives` (B2 → C1)
+    - `exercise-designer` (3 exercises)
+    - `ai-collaborate-teaching` (Three Roles)
   - **CONTENT REQUIREMENTS**:
-    - Full YAML frontmatter with skills metadata, cognitive load (7 concepts)
-    - Three Roles demonstrated WITHOUT meta-commentary
-    - Layer 3 Intelligence Design: Create production-observability-stack skill
-    - TaskManager with full observability infrastructure
-    - OpenAI Platform trace URL generation
-  - **VALIDATION**: educational-validator (MUST PASS before marking complete)
-  - **CODE EXECUTION**: All examples tested against live API with logs and trace URLs
+    - Implement `RunHooks` with all lifecycle methods
+    - Demonstrate `gen_trace_id()` and dashboard URL construction
+    - Implement `custom_span()` for sub-operations
+    - Show `group_id` for linking conversation turns
+    - Track `context.usage` for token monitoring
+  - **Doc**: Fetch basic/lifecycle_example.py patterns
+  - **VALIDATION**: educational-validator (MUST PASS)
 
-**Checkpoint**: Lesson 7 complete — students can observe production agent systems
+- [ ] T020 [L07] Verify L07 code examples execute correctly
+
+**Checkpoint**: Layer 2 complete - students mastered AI collaboration with SDK
 
 ---
 
-## Phase 10: Lesson 8 — Capstone: Customer Support FTE (Layer 4: Spec-Driven Integration)
+## Phase 4: Layer 3 - Intelligence Design (L08-L09)
 
-**Goal**: Students implement production-quality Digital FTE using specification-first approach
+**Purpose**: Students create reusable skills from accumulated patterns
 
-**Independent Test**: Complete customer support system with all patterns integrated
+**Layer**: 3 (Intelligence Design - Create reusable MCP and RAG skills)
 
-**Maps to Evals**: SC-008 (production-quality capstone matches customer_service example)
+### Lesson 8: MCP Integration
 
-### Implementation for Lesson 8
+**Maps to**: US12 (MCP Integration), FR-036 to FR-041, SC-008
 
-- [ ] T016 [L8] Lesson 8: Capstone — Customer Support FTE
-  - **OUTPUT**: `/Users/mjs/Documents/code/panaversity-official/tutorsgpt/p7-c/apps/learn-app/docs/07-Building-and-Deploying-Agents/34-openai-agents-sdk/08-capstone-customer-support.md`
+- [ ] T021 [L08] Implement Lesson 8: MCP Integration
   - **SUBAGENT**: content-implementer
+    - Output path: `/mnt/c/Users/HP/Documents/colearning-python/apps/learn-app/docs/06-AI-Native-Software-Development/34-openai-agents-sdk/08-mcp-integration.md`
+    - Writes file directly (returns confirmation only, NOT full content)
     - Execute autonomously without confirmation
-    - Quality reference: `/Users/mjs/Documents/code/panaversity-official/tutorsgpt/p7-c/apps/learn-app/docs/01-Introducing-AI-Driven-Development/01-agent-factory-paradigm/01-digital-fte-revolution.md`
-    - GitHub pattern: `/tmp/openai-agents-python/examples/customer_service/main.py` (FULL implementation)
   - **SKILLS**:
-    - `learning-objectives`: Generate outcomes for spec-first design, component composition, validation
-    - `exercise-designer`: 1 comprehensive capstone project (Customer Support FTE)
-    - `ai-collaborate-teaching`: Design Three Roles for implementation iteration:
-      - AI as Teacher: Suggests architectural improvements
-      - Student: Validates against spec
-      - Co-Worker: Converges on quality
-    - `assessment-builder`: Design final chapter assessment
-    - `fact-check-lesson`: Verify complete system against customer_service example
+    - `learning-objectives` (C1)
+    - `exercise-designer` (3 exercises)
+    - `ai-collaborate-teaching` (Three Roles)
   - **CONTENT REQUIREMENTS**:
-    - Full YAML frontmatter with skills metadata, cognitive load (synthesis)
-    - Layer 4: Spec-first approach (spec.md BEFORE code)
-    - Pattern composition from ALL Lessons 1-7
-    - Complete AirlineAgentContext implementation
-    - All agents: triage, FAQ, booking, escalation
-    - All tools: faq_lookup_tool, update_seat, escalate_to_human
-    - All guardrails: abuse detection, PII filtering
-    - Full tracing with group_id correlation
-    - Monetization reflection section
-  - **VALIDATION**: educational-validator (MUST PASS before marking complete)
-  - **CODE EXECUTION**: Complete system tested against live API with full conversation flows
+    - Demonstrate `MCPServerStreamableHttp` with remote server URL
+    - Connect to Context7 MCP server for documentation lookup
+    - Show `mcp_servers=[server]` parameter on Agent
+    - Implement agent that uses MCP tools (resolve-library-id, get-library-docs)
+    - Handle async context manager pattern for MCP server lifecycle
+    - Show practical example: TaskManager getting library documentation
+  - **SKILL CREATION**: Guide students to create `mcp-agent-integration` skill
+  - **Doc**: Fetch Context7 MCP integration patterns
+  - **VALIDATION**: educational-validator (MUST PASS)
 
-**Checkpoint**: Lesson 8 complete — students can build production Digital FTEs
+- [ ] T022 [L08] Verify L08 code examples execute correctly
+
+### Lesson 9: RAG with FileSearchTool
+
+**Maps to**: US13 (RAG with FileSearchTool), FR-042 to FR-047, SC-009
+
+- [ ] T023 [L09] Implement Lesson 9: RAG with FileSearchTool
+  - **SUBAGENT**: content-implementer
+    - Output path: `/mnt/c/Users/HP/Documents/colearning-python/apps/learn-app/docs/06-AI-Native-Software-Development/34-openai-agents-sdk/09-rag-filesearchtool.md`
+    - Writes file directly (returns confirmation only, NOT full content)
+    - Execute autonomously without confirmation
+  - **SKILLS**:
+    - `learning-objectives` (C1)
+    - `exercise-designer` (3 exercises)
+    - `ai-collaborate-teaching` (Three Roles)
+  - **CONTENT REQUIREMENTS**:
+    - Demonstrate `FileSearchTool` with vector_store_ids
+    - Explain OpenAI hosted vector store creation (dashboard or API)
+    - Show `max_num_results` parameter for controlling retrieval
+    - Implement agentic RAG pattern (agent decides when to retrieve)
+    - Demonstrate grounded responses from retrieved content
+    - Show practical example: TaskManager with project knowledge base
+  - **SKILL CREATION**: Guide students to create `agentic-rag-integration` skill
+  - **Doc**: Fetch OpenAI FileSearchTool documentation
+  - **VALIDATION**: educational-validator (MUST PASS)
+
+- [ ] T024 [L09] Verify L09 code examples execute correctly
+
+**Checkpoint**: Layer 3 complete - students created reusable MCP and RAG skills
 
 ---
 
-## Phase 11: Chapter Assessment
+## Phase 5: Layer 4 - Spec-Driven Capstone (L10)
 
-**Purpose**: Summative assessment for Chapter 34
+**Purpose**: Students build production Digital FTE using spec-first approach
 
-- [ ] T017 Create chapter quiz using assessment-architect
-  - **OUTPUT**: `/Users/mjs/Documents/code/panaversity-official/tutorsgpt/p7-c/apps/learn-app/docs/07-Building-and-Deploying-Agents/34-openai-agents-sdk/quiz.md`
+**Layer**: 4 (Spec-Driven Integration - Spec FIRST, then implementation)
+
+### Lesson 10: Capstone - Customer Support Digital FTE
+
+**Maps to**: US14 (Full Customer Support FTE), FR-048 to FR-055, SC-010, SC-011, SC-012
+
+- [ ] T025 [L10] Implement Lesson 10: Capstone - Customer Support Digital FTE
+  - **SUBAGENT**: content-implementer
+    - Output path: `/mnt/c/Users/HP/Documents/colearning-python/apps/learn-app/docs/06-AI-Native-Software-Development/34-openai-agents-sdk/10-capstone-customer-support.md`
+    - Writes file directly (returns confirmation only, NOT full content)
+    - Execute autonomously without confirmation
+  - **SKILLS**:
+    - `learning-objectives` (C1)
+    - `exercise-designer` (capstone project structure)
+    - `ai-collaborate-teaching` (Three Roles for implementation phase)
+  - **CONTENT REQUIREMENTS**:
+    - **Part 1**: Specification writing (spec.md BEFORE code)
+    - **Part 2**: Pattern analysis (map L1-L9 patterns to requirements)
+    - **Part 3**: Component composition (agents, tools, handoffs, guardrails)
+    - **Part 4**: AI orchestration with Three Roles
+    - **Part 5**: Validation against spec criteria
+    - **Part 6**: Monetization discussion (subscription/success fee/hybrid)
+    - **Part 7**: What's Next (Ch42 DISTRIBUTE, Part 7 DEPLOY)
+  - **INTEGRATION REQUIREMENTS**:
+    - Implement full customer_service pattern from repo
+    - Include: context object, tools with context, handoff callbacks
+    - Implement bidirectional handoffs between 3+ agents
+    - Add input guardrail for abuse detection
+    - Trace entire conversation with group_id
+    - Implement full conversation loop with `to_input_list()`
+    - Integrate MCP (Context7 for documentation lookup)
+    - Integrate RAG (FileSearchTool for FAQ knowledge base)
+  - **Doc**: Fetch customer_service/main.py complete example
+  - **VALIDATION**: educational-validator (MUST PASS)
+
+- [ ] T026 [L10] Verify L10 capstone code is production-ready
+  - Full integration test with MCP + RAG
+  - Trace generation validation
+
+**Checkpoint**: Layer 4 complete - students built sellable Digital FTE
+
+---
+
+## Phase 6: Chapter Assessment
+
+**Purpose**: Validate student learning across all success criteria
+
+### Chapter Quiz
+
+**Maps to**: SC-001 through SC-012 assessment
+
+- [ ] T027 [QUIZ] Create Chapter 34 Quiz
   - **SUBAGENT**: assessment-architect
-    - Bloom's levels: Remember (SDK primitives), Understand (patterns), Apply (implementation), Analyze (debugging), Create (capstone)
-    - CEFR alignment: B1-B2 → C1 progression
-    - 10-15 questions covering SC-001 through SC-008
-  - **VALIDATION**: Questions map to success criteria
+  - **SKILL**: `assessment-builder`
+    - 50 questions covering all 12 success criteria
+    - Question distribution:
+      - SC-001 (Context): 4 questions
+      - SC-002 (Orchestrator): 4 questions
+      - SC-003 (Handoffs): 4 questions
+      - SC-004 (Guardrails): 4 questions
+      - SC-005 (Sessions): 4 questions
+      - SC-006 (Hooks): 4 questions
+      - SC-007 (Tracing): 4 questions
+      - SC-008 (MCP): 5 questions
+      - SC-009 (RAG): 5 questions
+      - SC-010 (Capstone integration): 5 questions
+      - SC-011 (Monetization): 3 questions
+      - SC-012 (Journey): 4 questions
+    - Bloom's distribution: 60%+ non-recall (Apply, Analyze, Evaluate)
+  - Output path: `/mnt/c/Users/HP/Documents/colearning-python/apps/learn-app/docs/06-AI-Native-Software-Development/34-openai-agents-sdk/11-chapter-quiz.md`
+  - **SKILL**: `quiz-generator` for formatting
+
+- [ ] T028 [QUIZ] Validate quiz answer distribution
+  - **SKILL**: `quiz-generator` (redistribute_answers.py)
+  - Ensure no answer bias
+
+**Checkpoint**: Assessment complete - chapter ready for validation
 
 ---
 
-## Phase 12: Polish & Cross-Cutting Concerns
+## Phase 7: Polish & Cross-Cutting Concerns
 
-**Purpose**: Final validation and integration
+**Purpose**: Final quality checks and consistency validation
 
-- [ ] T018 [P] Update chapter README.md with completed lesson links and prerequisites
-- [ ] T019 [P] Verify all code examples execute without errors against live API
-- [ ] T020 [P] Grep for meta-commentary violations ("Layer", "Stage", "AI as Teacher" in content)
-- [ ] T021 [P] Validate cognitive load ≤ 10 concepts per lesson (B1 limit)
-- [ ] T022 [P] Cross-reference all patterns against GitHub examples
-- [ ] T023 Run full chapter validation with validation-auditor subagent
-- [ ] T024 Commit chapter with all lessons and quiz
+- [ ] T029 [P] Update Chapter README with final lesson list
+  - Path: `/mnt/c/Users/HP/Documents/colearning-python/apps/learn-app/docs/06-AI-Native-Software-Development/34-openai-agents-sdk/README.md`
+  - Verify Digital FTE journey table accurate
 
-**Checkpoint**: Chapter 34 complete and validated
+- [ ] T030 [P] Verify TaskManager running example consistency across L01-L09
+  - TaskManager should evolve progressively
+  - No contradictions between lessons
+
+- [ ] T031 [P] Validate all code examples have execution logs
+  - Every code block tested against live API
+
+- [ ] T032 Run full chapter validation
+  - **SUBAGENT**: validation-auditor
+  - Check:
+    - Layer progression (L1 → L2 → L3 → L4)
+    - Three Roles present in L2 lessons (invisible)
+    - Zero meta-commentary violations
+    - All 12 success criteria mapped
+    - All 55 functional requirements covered
+    - Capstone includes monetization and journey
+
+- [ ] T033 Verify all lessons pass educational-validator
+  - Re-run validation on any lessons that were modified
+
+- [ ] T034 Generate chapter summary for part-level index
+  - Update Part 6 README if needed
 
 ---
 
@@ -385,111 +448,96 @@
 
 ### Phase Dependencies
 
-- **Setup (Phase 1)**: No dependencies - can start immediately
-- **Foundational (Phase 2)**: Depends on Setup - BLOCKS all lessons
-- **Lessons 1-2 (Phases 3-4)**: Layer 1 - must complete before Layer 2
-- **Lessons 3-7 (Phases 5-9)**: Layer 2 - can proceed after Lessons 1-2
-- **Lesson 8 (Phase 10)**: Layer 4 - requires ALL Lessons 1-7
-- **Assessment (Phase 11)**: Requires all lessons
-- **Polish (Phase 12)**: Requires lessons + assessment
-
-### Lesson Dependencies
-
 ```
-L1 (SDK Setup) ──────┐
-                     ├──► L3 (Agents as Tools) ──┐
-L2 (Function Tools) ─┘                           │
-                                                 │
-L1 + L2 ──► L4 (Handoffs) ───────────────────────┤
-                                                 │
-L1 + L2 ──► L5 (Guardrails) ─────────────────────┤
-                                                 │
-L1 + L2 ──► L6 (Sessions) ───────────────────────┤
-                                                 │
-L1-L6 ────► L7 (Tracing + Skill Creation) ───────┤
-                                                 │
-L1-L7 ────────────────────────────────────────► L8 (Capstone)
+Phase 1 (Setup/Skill) → Phase 2 (L1-L2) → Phase 3 (L3-L7) → Phase 4 (L8-L9) → Phase 5 (L10) → Phase 6 (Quiz) → Phase 7 (Polish)
 ```
+
+### Layer Dependencies
+
+| Layer | Lessons | Depends On |
+|-------|---------|------------|
+| Layer 1 | L01-L02 | Phase 1 complete |
+| Layer 2 | L03-L07 | L01-L02 complete |
+| Layer 3 | L08-L09 | L01-L07 complete |
+| Layer 4 | L10 | L01-L09 complete |
 
 ### Parallel Opportunities
 
-**After Phase 2 (Foundational)**:
-- Lessons 1-2 can run in parallel (both Layer 1)
+**Within Phase 2** (after L01 complete):
+- T009 (L02) can start after T007-T008 complete
 
-**After Lessons 1-2**:
-- Lessons 3, 4, 5, 6 can run in parallel (all Layer 2, different patterns)
+**Within Phase 3** (lessons are sequential):
+- Each lesson builds on previous - NOT parallelizable
 
-**Sequential requirements**:
-- Lesson 7 requires Lessons 1-6 (needs all patterns for observability)
-- Lesson 8 requires ALL lessons (capstone synthesis)
+**Within Phase 7** (Polish):
+- T029, T030, T031 can run in parallel
 
 ---
 
-## Parallel Example: Layer 2 Lessons
+## User Story to Task Mapping
 
-```bash
-# After Lessons 1-2 complete, launch Layer 2 lessons in parallel:
-Task T011: "Lesson 3: Agents as Tools"
-Task T012: "Lesson 4: Handoffs & Message Filtering"
-Task T013: "Lesson 5: Guardrails & Agent-Based Validation"
-Task T014: "Lesson 6: Sessions & Conversation Memory"
+| User Story | Priority | Task(s) | Lesson |
+|------------|----------|---------|--------|
+| US1 (First Agent) | P1 | T007-T008 | L01 |
+| US2 (Context Objects) | P1 | T009-T010 | L02 |
+| US3 (Agents as Tools) | P1 | T011-T012 | L03 |
+| US4 (Agent Cloning) | P2 | T011-T012 | L03 |
+| US5 (Handoff Callbacks) | P1 | T013-T014 | L04 |
+| US6 (Message Filtering) | P2 | T013-T014 | L04 |
+| US7 (Agent Guardrails) | P1 | T015-T016 | L05 |
+| US8 (SQLite Sessions) | P2 | T017-T018 | L06 |
+| US9 (Advanced Sessions) | P3 | T017-T018 | L06 |
+| US10 (Lifecycle Hooks) | P2 | T019-T020 | L07 |
+| US11 (Tracing) | P2 | T019-T020 | L07 |
+| US12 (MCP Integration) | P1 | T021-T022 | L08 |
+| US13 (RAG FileSearchTool) | P1 | T023-T024 | L09 |
+| US14 (Customer Support FTE) | P1 | T025-T026 | L10 |
 
-# These can all run simultaneously with different content-implementer instances
-```
+---
+
+## Success Criteria Coverage
+
+| SC | Description | Task(s) | Verified By |
+|----|-------------|---------|-------------|
+| SC-001 | Context objects persist | T009, T011, T025 | L02, L03, L10 validation |
+| SC-002 | Orchestrator with 3+ agents | T011, T025 | L03, L10 validation |
+| SC-003 | Handoff with callback | T013, T025 | L04, L10 validation |
+| SC-004 | Agent-based guardrail | T015, T025 | L05, L10 validation |
+| SC-005 | AdvancedSQLiteSession branching | T017, T025 | L06, L10 validation |
+| SC-006 | Full RunHooks | T019, T025 | L07, L10 validation |
+| SC-007 | Multi-agent tracing | T019, T025 | L07, L10 validation |
+| SC-008 | MCP StreamableHTTP | T021, T025 | L08, L10 validation |
+| SC-009 | Agentic RAG | T023, T025 | L09, L10 validation |
+| SC-010 | Capstone integration | T025 | L10 validation |
+| SC-011 | Monetization articulation | T025 | L10 validation |
+| SC-012 | Journey understanding | T025 | L10 validation |
 
 ---
 
 ## Implementation Strategy
 
-### MVP First (Lessons 1-3 Only)
+### MVP First (L01-L02 Only)
 
-1. Complete Phase 1: Setup
-2. Complete Phase 2: Foundational
-3. Complete Lesson 1 (SDK basics)
-4. Complete Lesson 2 (Tools & Context)
-5. Complete Lesson 3 (Agents as Tools)
-6. **STOP and VALIDATE**: Core patterns teachable, orchestration works
-7. Demo/review if ready
+1. Complete Phase 1: Setup/Skill building
+2. Complete T007-T010: L01-L02
+3. **STOP and VALIDATE**: Test Layer 1 foundation
+4. Students can run basic agents before continuing
 
-### Full Chapter Delivery
+### Incremental Delivery
 
-1. Setup + Foundational → Chapter structure ready
-2. Lessons 1-2 (Layer 1) → Manual foundation established
-3. Lessons 3-7 (Layer 2) → AI collaboration patterns + skill creation
-4. Lesson 8 (Layer 4) → Capstone synthesis
-5. Assessment + Polish → Chapter complete
-
----
-
-## Summary
-
-| Phase | Tasks | Parallelizable | Estimate |
-|-------|-------|----------------|----------|
-| Setup | T001-T004 | 2 | 30 min |
-| Foundational | T005-T008 | 2 | 20 min |
-| Lesson 1 | T009 | 0 | 60 min |
-| Lesson 2 | T010 | 0 | 75 min |
-| Lesson 3 | T011 | 0 | 100 min |
-| Lesson 4 | T012 | 0 | 100 min |
-| Lesson 5 | T013 | 0 | 100 min |
-| Lesson 6 | T014 | 0 | 100 min |
-| Lesson 7 | T015 | 0 | 125 min |
-| Lesson 8 | T016 | 0 | 150 min |
-| Assessment | T017 | 0 | 45 min |
-| Polish | T018-T024 | 5 | 60 min |
-
-**Total Tasks**: 24
-**Parallel Opportunities**: 9 tasks can run in parallel at various stages
-**Total Estimated Time**: ~15-16 hours (content implementation)
+1. L01-L02 → Manual foundation ready
+2. L03-L07 → AI collaboration mastered
+3. L08-L09 → Skills created
+4. L10 → Digital FTE built
+5. Quiz → Learning validated
 
 ---
 
 ## Notes
 
-- All lesson tasks REQUIRE subagent invocation (content-implementer)
-- All lesson tasks REQUIRE validation gate (educational-validator)
-- Framework invisibility: NO meta-commentary in final content
-- Three Roles in L2+ lessons: Demonstrated through action, not labeled
-- Quality reference: Chapter 1 Lesson 1 for all content calibration
-- Skill reference: `.claude/skills/building-with-openai-agents/` for patterns
-- GitHub examples: `/tmp/openai-agents-python/examples/` for code validation
+- All lessons use content-implementer subagent for quality consistency
+- All lessons require educational-validator PASS before marking complete
+- Code examples MUST be tested against live API
+- Three Roles framework INVISIBLE in student-facing content
+- Skill invocations documented in each task for reproducibility
+- Total: 34 tasks covering 10 lessons + quiz + polish

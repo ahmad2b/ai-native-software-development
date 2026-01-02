@@ -6,14 +6,25 @@
 **Proficiency Level**: B1-B2 → C1 (Build production FTEs)
 **Source Examples**: `github.com/openai/openai-agents-python/examples/`
 
-## Vision: Building FTEs (Full-Time Equivalent Digital Employees)
+## Vision: BUILD Phase of the Digital FTE Journey
 
-This chapter teaches production mastery of the OpenAI Agents SDK—the same infrastructure powering ChatGPT's agentic features. Students don't just learn the API; they master the patterns needed to build autonomous digital workers that can:
+This chapter is the **BUILD** phase of creating Digital Full-Time Equivalents (Digital FTEs)—AI agents priced and sold as workforce replacements.
+
+| Phase | Chapter | Outcome |
+|-------|---------|---------|
+| **BUILD** | **Ch34: OpenAI Agents SDK** | Working production agent system |
+| DISTRIBUTE | Ch42: OpenAI Apps SDK | Package for 800M+ user marketplace |
+| DEPLOY | Part 7: Cloud-Native | Kubernetes, scaling, monitoring |
+
+Students master the OpenAI Agents SDK—the same infrastructure powering ChatGPT's agentic features. They don't just learn the API; they build autonomous digital workers that can:
 - Maintain context across complex multi-turn workflows
 - Hand off to specialists while preserving conversation state
 - Self-validate with guardrails before taking action
 - Persist memory across sessions
 - Produce debuggable traces for continuous improvement
+- Integrate external knowledge via MCP and RAG
+
+The capstone delivers a **Customer Support Digital FTE** with monetization models (subscription, success fee, hybrid) so students understand how to price their agent when ready to ship.
 
 **Reference Repository**: All patterns are based on real examples from `openai/openai-agents-python`.
 
@@ -481,6 +492,8 @@ result = await Runner.run(agent, "What are the coding standards for this project
 - **SC-008**: Students can connect agents to MCP servers using StreamableHTTP
 - **SC-009**: Students can implement agentic RAG with FileSearchTool
 - **SC-010**: Capstone integrates all 9 lessons into production-ready Digital FTE
+- **SC-011**: Students can articulate monetization model (subscription/success fee/hybrid) for their Digital FTE
+- **SC-012**: Students understand the BUILD → DISTRIBUTE → DEPLOY journey and where to go next (Ch42, Part 7)
 
 ---
 
